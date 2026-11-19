@@ -1,13 +1,13 @@
 # RAG thresholds used by the deterministic rules engine.
 # Bump `version` whenever a cut-off changes; it is stored with every health snapshot.
-version: "1.1"
+version: "1.2"               # 1.2: say/do caps completed points at each sprint's commitment
 
 windows:
   say_do_sprints: 3          # rolling window of closed sprints for ratio metrics
   velocity_sprints: 5        # closed sprints used for velocity variability
 
 metrics:
-  say_do_ratio:              # completed points / committed points (window)
+  say_do_ratio:              # completed (capped per sprint at commitment) / committed (window)
     direction: higher_is_better
     green: 0.85
     amber: 0.70

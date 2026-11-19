@@ -51,6 +51,17 @@ def _ratio_metric(metric: str, squad_id: str, rows: pd.DataFrame, numerator: int
     )
 
 
+def delivered_against_commitment(rows: pd.DataFrame) -> pd.Series:
+    """Completed points counted towards say/do, capped at each sprint's commitment.
+
+    Completed points include unplanned work pulled in mid-sprint, so a squad can finish
+    more than it committed. Say/do measures whether the commitment was kept, so extra work
+    never lifts a sprint above 100%, and over-delivery in one sprint cannot hide
+    under-delivery in another. Velocity still uses the uncapped completed points.
+    """
+    return rows["completed_points"].clip(upper=rows["committed_points"])
+
+
 def sprint_metrics(commitments: pd.DataFrame, sprints: pd.DataFrame, squad_id: str,
                    as_of: date, thresholds: Thresholds) -> dict[str, MetricResult]:
     closed = closed_sprint_ids(sprints, as_of)
@@ -58,8 +69,8 @@ def sprint_metrics(commitments: pd.DataFrame, sprints: pd.DataFrame, squad_id: s
 
     results = {
         "say_do_ratio": _ratio_metric(
-            "say_do_ratio", squad_id, win, int(win["completed_points"].sum()),
-            "Completed", thresholds),
+            "say_do_ratio", squad_id, win, int(delivered_against_commitment(win).sum()),
+            "Completed (capped at each sprint's commitment)", thresholds),
         "scope_change_pct": _ratio_metric(
             "scope_change_pct", squad_id, win,
             int(win["added_points"].sum() + win["removed_points"].sum()),
@@ -91,7 +102,7 @@ def sprint_series(commitments: pd.DataFrame, sprints: pd.DataFrame) -> pd.DataFr
     """Per sprint and squad ratios for charts (includes the in-flight sprint)."""
     df = commitments.merge(sprints[["sprint_id", "number", "end_date"]], on="sprint_id")
     committed = df["committed_points"].where(df["committed_points"] > 0)
-    df["say_do_ratio"] = df["completed_points"] / committed
+    df["say_do_ratio"] = delivered_against_commitment(df) / committed
     df["scope_change_pct"] = (df["added_points"] + df["removed_points"]) / committed
     df["carry_over_pct"] = df["carried_over_points"] / committed
     return df.sort_values(["number", "squad_id"]).reset_index(drop=True)

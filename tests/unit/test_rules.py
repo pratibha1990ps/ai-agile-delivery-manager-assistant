@@ -55,6 +55,27 @@ def test_say_do_excludes_in_flight_sprint_and_cites_sources():
     assert "101 vs 120" in m.explanation
 
 
+def test_say_do_caps_each_sprint_at_its_commitment():
+    # S1 over-delivers (45 of 40): counts as 40, so it cannot mask S2's shortfall.
+    c = commitments([(40, 45, 8, 0, 0), (40, 30, 0, 0, 10), (40, 40, 0, 0, 0)])
+    m = sprint_metrics(c, SPRINTS, "X", AS_OF, TH)
+    assert m["say_do_ratio"].value == pytest.approx(110 / 120, abs=1e-4)
+    assert "capped" in m["say_do_ratio"].explanation
+    assert m["velocity_cv"].value is not None   # velocity keeps the uncapped 45
+
+
+def test_say_do_never_exceeds_100_percent():
+    c = commitments([(40, 48, 10, 0, 0)] * 3)
+    assert sprint_metrics(c, SPRINTS, "X", AS_OF, TH)["say_do_ratio"].value == 1.0
+
+
+def test_sprint_series_say_do_is_capped():
+    from adm.rules.sprint import sprint_series
+    c = commitments([(40, 48, 10, 0, 0), (40, 30, 0, 0, 10)])
+    s = sprint_series(c, SPRINTS).set_index("sprint_id")["say_do_ratio"]
+    assert s["S1"] == 1.0 and s["S2"] == pytest.approx(0.75)
+
+
 def test_say_do_boundary_is_green():
     c = commitments([(40, 34, 0, 0, 6)] * 3)                  # exactly 85%
     assert sprint_metrics(c, SPRINTS, "X", AS_OF, TH)["say_do_ratio"].rag is RAG.GREEN

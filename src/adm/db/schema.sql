@@ -223,6 +223,20 @@ CREATE TABLE IF NOT EXISTS ai_citation (
     valid          INTEGER NOT NULL
 );
 
+-- Phase 3: one row per human review of an AI item. History is kept: the latest row per item
+-- is the current decision. item_text snapshots what was reviewed.
+CREATE TABLE IF NOT EXISTS ai_review (
+    review_id      INTEGER PRIMARY KEY AUTOINCREMENT,
+    ai_output_id   INTEGER NOT NULL REFERENCES ai_output(ai_output_id),
+    item_kind      TEXT NOT NULL CHECK (item_kind IN ('finding', 'recommendation')),
+    item_index     INTEGER NOT NULL,
+    decision       TEXT NOT NULL CHECK (decision IN ('approved', 'rejected')),
+    reviewer       TEXT NOT NULL,
+    comment        TEXT,
+    item_text      TEXT NOT NULL,
+    reviewed_at    TEXT NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS decision (
     decision_id     TEXT PRIMARY KEY,
     title           TEXT NOT NULL,

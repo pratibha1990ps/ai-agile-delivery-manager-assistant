@@ -27,7 +27,7 @@ def show_records(conn: sqlite3.Connection, record_ids: Iterable[str], key: str) 
             missing.append(rid)
     for entity, rows in grouped.items():
         st.markdown(f"**{ENTITY_BY_NAME[entity].label}** ({len(rows)})")
-        st.dataframe(pd.DataFrame(rows), hide_index=True, use_container_width=True,
+        st.dataframe(pd.DataFrame(rows), hide_index=True, width="stretch",
                      key=f"{key}-{entity}")
     if missing:
         st.error("Not found in the database: " + ", ".join(missing))
@@ -44,7 +44,7 @@ def record_lookup(conn: sqlite3.Connection, key: str = "lookup") -> None:
     entity, rec = hit
     st.markdown(f"**{ENTITY_BY_NAME[entity].label}** · `{rid}`")
     st.dataframe(pd.DataFrame([rec]).T.rename(columns={0: "value"}).astype(str),
-                 use_container_width=True)
+                 width="stretch")
     batch = conn.execute("SELECT * FROM import_batch WHERE import_batch_id = ?",
                          (rec.get("import_batch_id"),)).fetchone()
     if batch:

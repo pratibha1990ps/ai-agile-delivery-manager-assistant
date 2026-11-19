@@ -25,6 +25,9 @@ llm = ["openai>=1.40", "anthropic>=0.40"]
 [tool.setuptools.packages.find]
 where = ["src"]
 
+[tool.setuptools.package-data]
+adm = ["db/schema.sql", "ai/prompts/**/*.md"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-ra"

@@ -82,6 +82,19 @@ class CompositeThresholds(BaseModel):
         return self
 
 
+class EscalationThresholds(BaseModel):
+    """When an open RAID item becomes a candidate for leadership escalation."""
+    min_risk_score: int = Field(default=15, ge=1, le=25)
+    issue_min_impact: int = Field(default=4, ge=1, le=5)
+    include_amber_milestones: bool = True    # AMBER milestones count as critical links
+
+
+class ExposureSettings(BaseModel):
+    """Which dependencies expose the requesting squad's current-PI objectives."""
+    states: list[Literal["late", "at_risk"]] = ["late", "at_risk"]
+    committed_only: bool = True              # ignore stretch objectives
+
+
 class Thresholds(BaseModel):
     version: str
     windows: WindowSettings = WindowSettings()
@@ -91,6 +104,8 @@ class Thresholds(BaseModel):
     milestones: MilestoneThresholds = MilestoneThresholds()
     health_weights: dict[str, float]
     composite: CompositeThresholds = CompositeThresholds()
+    escalation: EscalationThresholds = EscalationThresholds()
+    exposure: ExposureSettings = ExposureSettings()
 
     @model_validator(mode="after")
     def _check_weights(self) -> Thresholds:
@@ -117,18 +132,27 @@ class DatabaseSettings(BaseModel):
         return p if p.is_absolute() else root / p
 
 
+class AISettings(BaseModel):
+    """How much delivery data an AI analysis may see. Optional section in settings.yaml."""
+    max_facts: int = Field(default=80, ge=10, le=500)      # cap on facts sent to the model
+    max_note_chars: int = Field(default=500, ge=0, le=2000)
+
+
 class Settings(BaseModel):
     app: AppSettings
     database: DatabaseSettings
+    ai: AISettings = AISettings()
 
 
 class LLMSettings(BaseModel):
     provider: Literal["mock", "openai_compatible", "anthropic"] = "mock"
     model: str = "mock-grounded-v1"
-    temperature: float = Field(default=0.0, ge=0.0, le=2.0)
-    max_tokens: int = Field(default=1500, ge=1)
+    temperature: float = Field(default=0.0, ge=0.0, le=2.0)   # sent to OpenAI-compatible only
+    max_tokens: int = Field(default=16000, ge=1)   # a ceiling, not a target; low caps truncate
     base_url: str | None = None
     api_key_env: str | None = None
+    timeout_seconds: float = Field(default=120.0, gt=0, le=600)
+    json_mode: bool = True   # OpenAI-compatible servers: ask for a JSON object response
 
     def api_key(self) -> str | None:
         """Read the key from the environment at call time; never stored in config."""

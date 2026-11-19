@@ -13,7 +13,7 @@ def test_project_config_loads():
     cfg = load_config()
     assert cfg.settings.app.programme_name == "Project Meridian"
     assert isinstance(cfg.settings.app.as_of_date, date)
-    assert cfg.thresholds.version == "1.2"
+    assert cfg.thresholds.version == "1.3"
     assert "say_do_ratio" in cfg.thresholds.metrics
 
 

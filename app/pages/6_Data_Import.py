@@ -45,7 +45,7 @@ def show_result(result: ImportResult) -> None:
             pd.DataFrame([i.__dict__ for i in result.issues]).rename(
                 columns={"file_name": "file", "row": "source row"}
             ),
-            hide_index=True, use_container_width=True,
+            hide_index=True, width="stretch",
         )
 
 
@@ -110,7 +110,7 @@ with tab_data:
                           format_func=lambda n: ENTITY_BY_NAME[n].label)
     df = repo.fetch_df(conn, entity)
     st.caption("`import_batch_id` and `source_row` show where each record came from.")
-    st.dataframe(df, hide_index=True, use_container_width=True)
+    st.dataframe(df, hide_index=True, width="stretch")
 
     with st.expander("Danger zone"):
         confirm = st.checkbox("I understand this deletes all data in the local database")
@@ -120,5 +120,5 @@ with tab_data:
             st.rerun()
 
 with tab_history:
-    st.dataframe(repo.list_import_batches(conn), hide_index=True, use_container_width=True)
+    st.dataframe(repo.list_import_batches(conn), hide_index=True, width="stretch")
     st.caption(f"Database: `{Path(db_path)}`")

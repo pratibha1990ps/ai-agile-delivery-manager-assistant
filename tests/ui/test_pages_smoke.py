@@ -13,7 +13,9 @@ def test_home_module_status_reflects_built_pages():
     lines = {line.split("|")[1].strip(): line for line in table.splitlines()[2:]}
     assert "✅ Live" in lines["1. Delivery Control Tower"]
     assert "✅ Live" in lines["Data Import"]
-    assert "⏳ Planned" in lines["2. AI RAID Analyst"]
+    assert "✅ Live" in lines["2. AI RAID Analyst"]
+    assert "✅ Live" in lines["AI Audit Log"]
+    assert "⏳ Planned" in lines["3. Sprint & PI Health Analyser"]
 
 
 @pytest.mark.parametrize("page", PAGES, ids=lambda p: p.name)

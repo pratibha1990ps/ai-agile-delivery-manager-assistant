@@ -22,6 +22,12 @@ A dated record of what was done, how, and the evidence for it. Command outputs a
 | 12 | 2026-11-19 | Documentation | Product documentation set (this `docs/` folder) written in a parallel session | [README.md](README.md) |
 | 13 | 2026-11-19 | Execution: Phases 1–2 | Ingestion, generator, Data Import page, rules engine and Control Tower completed in the main build session. Test suite at **112 passed** before the audit | §Evidence G |
 | 14 | 2026-11-19 | Execution: Phase 1 | **Generator audit** against the data brief. Four gaps closed: forward backlog (~650 items), feature ↔ work-item consistency, RAID descriptions, per-entity seeded streams. No schema or importer changes | §Evidence H |
+| 15 | 2026-11-19 | Execution: Phases 0–2 | Initial commit `67f4dc3` (78 files) | `git log` |
+| 16 | 2026-11-19 | Operations | Read-only inventory of `data/adm.db` found the **older** dataset (580 work items, 0 RAID descriptions). Backed up to `data/adm_backup_before_reload_20261119.db`, reset, re-imported in strict mode | §Evidence I |
+| 17 | 2026-11-19 | Execution: Phase 2 | Front-end review found Payments at 101% say/do and a stale Home table. Say/do capped per sprint (thresholds v1.2); Home reads live page status. Commit `5496709`, 122 tests | §Evidence I |
+| 18 | 2026-11-19 | Discovery: Phase 3 | Phase 3 plan approved. Product owner decisions: squad-level **exposure rule** (no schema change) and additive **`ai_review`** table | [03 ADR-010/011](03_architecture_and_solution_design.md#adr-010--additive-ai_review-table-for-human-decisions) |
+| 19 | 2026-11-19 | Execution: Phase 3 | Eleven tasks T1–T11 delivered one at a time, each with tests and a review pause | §Evidence J |
+| 20 | 2026-11-19 | Execution: Phase 3 | AI RAID Analyst checked in the browser: clean escalation run, then `rag_override` fault demo rejected by the validator | §Evidence J |
 
 ## Evidence
 
@@ -148,6 +154,61 @@ Squad personalities after regeneration (closed sprints S01–S07, from `sprint_s
 
 Note: `data/adm.db` keeps the previously imported data until the database is reset and the demo dataset is re-imported.
 
+### I · Database reload and Phase 2 corrections
+```text
+Inventory (read-only): work_item 580 · RAID with description 0/90 · work items in S09/S10 0
+Reload:   import: imported files: 11 errors: 0 warnings: 0
+          snapshot rows saved: 41
+After:    work_item 634 · RAID with description 90 · batches matching current CSVs 11 of 11
+          fk violations: [] | integrity: ok
+```
+Say/do fix: Payments moved from 101% to **100%**; every RAG status was unchanged.
+
+### J · Phase 3 (AI foundation + AI RAID Analyst)
+Test suite after each task (all without network access or a paid API):
+
+| Task | Delivered | Tests passing |
+|---|---|---|
+| T1 | AI contracts and settings | 136 |
+| T2 | Provider interface, mock, factory | 153 |
+| T3 | OpenAI-compatible and Anthropic providers (fake SDKs in tests) | 182 |
+| T4 | Escalation and exposure rules (thresholds 1.3) | 198 |
+| T5 | Fact pack builder | 233 |
+| T6 | Versioned prompts and registry | 250 |
+| T7 | Grounding validator | 294 |
+| T8 | Audit log and `ai_review` | 309 |
+| T9 | RAID Analyst service | 338 |
+| T10 | AI RAID Analyst page | 344 |
+| T11 | AI Audit Log page and docs | 346 |
+
+```text
+> pytest -q
+346 passed in 49.66s
+> ruff check .
+All checks passed!
+```
+
+Issues found by tests during Phase 3 and fixed at the source (not by loosening tests):
+
+| Found in | Issue | Fix |
+|---|---|---|
+| T2 | "RED" matched inside "recorded" / "ordered" | Whole-word status matching |
+| T5 | Healthy GREEN metrics pushed RAID records out of the capped pack | Healthy metrics rank last |
+| T7 | "Mark Identity & Security as AMBER" was not detected as a status change | Assignment verbs added to the check |
+| T9 | Exposure facts mentioned PI-2 without listing it as a source | The PI is now a source of every exposure |
+| T9 | Mock re-sorted findings by severity and dropped escalation candidates | Mock keeps the fact pack's priority order |
+
+Browser verification (`http://localhost:8501/RAID_Analyst`, mock provider):
+
+```text
+Run 1  Escalation · whole programme   → "Every AI statement passed validation against the fact pack."
+       80 facts (58 lower-priority omitted) · prompt raid_analyst@v1 · audit #1
+Run 2  Immediate attention + fault rag_override
+       → "Some AI statements failed validation and are hidden."
+       Validation details: 12 verified · 1 flagged · 1 rejected (finding 1: rag_override)
+```
+Both runs are stored in `data/adm.db` (`ai_output` #1 `valid`, #2 `partially_rejected`).
+
 ## Artefacts by phase
 
 ### Phase 0 artefacts ✅ Done
@@ -183,6 +244,11 @@ The table below was written while Phase 1 was in progress. Since then, all of th
 | [`app/pages/6_Data_Import.py`](../app/pages/6_Data_Import.py), `tests/integration/`, `tests/unit/test_validation.py`, `tests/unit/test_synthetic.py` | Import UI and Phase 1 tests | ✅ Done |
 
 **Deviation recorded:** the plan put the generator at `data/generator/`. It is being built as an importable package under `src/adm/synthetic/`, so that tests and the UI can import it.
+
+### Phase 3 artefacts ✅ Done
+
+See the task table in [04_product_backlog.md](04_product_backlog.md) (E3 · How it was delivered)
+and [03 §10](03_architecture_and_solution_design.md#10-phase-3-ai-layer-as-built).
 
 ## How to reproduce the Phase 0 evidence
 ```bash

@@ -85,6 +85,10 @@ sequenceDiagram
 | AI safety | Structured JSON plus a grounding validator | [ADR-006](#adr-006--structured-json-output-plus-a-grounding-validator) |
 | Thresholds | Versioned YAML | [ADR-007](#adr-007--thresholds-in-versioned-yaml) |
 | Import | All-or-nothing by default | [ADR-008](#adr-008--all-or-nothing-import-by-default) |
+| AI evidence | Fact pack chosen by scope + focus, capped, fingerprinted | [ADR-009](#adr-009--fact-pack-retrieval-by-scope-and-focus) |
+| Human review | Additive `ai_review` table with full history | [ADR-010](#adr-010--additive-ai_review-table-for-human-decisions) |
+| Escalation and exposure | Deterministic rules; exposure is squad-level | [ADR-011](#adr-011--escalation-and-exposure-are-rules-not-ai) |
+| Prompts | Versioned files, immutable once published | [ADR-012](#adr-012--versioned-immutable-prompt-files) |
 
 ## 2. Application module breakdown
 
@@ -108,8 +112,18 @@ sequenceDiagram
 | [`src/adm/db/connection.py`](../src/adm/db/connection.py) | Connect, init, reset, `ADM_DB_PATH` override | Built (Phase 1) |
 | [`src/adm/db/repositories.py`](../src/adm/db/repositories.py) | Read-side queries and cross-entity record lookup | Built (Phase 1) |
 | [`src/adm/ingestion/schemas.py`](../src/adm/ingestion/schemas.py) | Pydantic row models and the entity registry | Built (Phase 1) |
-| `src/adm/ingestion/loaders.py`, `validator.py`, `importer.py` | CSV/Excel loading, cross-entity validation, import with lineage | In progress (Phase 1) |
-| `src/adm/synthetic/` | Seeded synthetic data generator and planted scenarios | In progress (Phase 1) |
+| `src/adm/ingestion/loaders.py`, `validator.py`, `importer.py` | CSV/Excel loading, cross-entity validation, import with lineage | Built (Phase 1) |
+| `src/adm/synthetic/` | Seeded synthetic data generator and planted scenarios | Built (Phase 1) |
+| `src/adm/rules/` (sprint, pi, raid, dependencies, milestones, health) | Deterministic rules and composite health | Built (Phase 2) |
+| `src/adm/rules/escalation.py`, `exposure.py` | Escalation candidates; dependency → objective exposure | Built (Phase 3) |
+| `src/adm/ai/models.py` | AI contracts: request, fact, fact pack, response schema | Built (Phase 3) |
+| `src/adm/ai/providers/` | `LLMProvider` interface; mock, OpenAI-compatible, Anthropic; factory | Built (Phase 3) |
+| `src/adm/facts/fact_pack.py` | Rule bundle and fact pack builder | Built (Phase 3) |
+| `src/adm/ai/prompt_registry.py`, `ai/prompts/` | Versioned prompt templates and rendering | Built (Phase 3) |
+| `src/adm/ai/grounding.py` | Grounding validator | Built (Phase 3) |
+| `src/adm/ai/audit.py` | AI audit log and human reviews | Built (Phase 3) |
+| `src/adm/services/raid_analyst.py` | RAID Analyst orchestration | Built (Phase 3) |
+| `app/pages/2_RAID_Analyst.py`, `7_AI_Audit_Log.py` | Phase 3 pages | Built (Phase 3) |
 | `src/adm/facts/`, `ai/`, `services/`, `reporting/` | Later phases | Empty packages |
 | [`app/Home.py`](../app/Home.py), `app/pages/*` | Streamlit UI | Home built; module pages are placeholders |
 
@@ -459,4 +473,51 @@ The config loads with this precedence ([`src/adm/config.py`](../src/adm/config.p
 - **Decision:** By default, validate everything first. If any error is found, import nothing and return a row-level error report. Partial import is an explicit opt-in. Files are tracked by hash so re-imports are idempotent.
 - **Consequences:** ✅ The database is always internally consistent, and errors are actionable (file, row, field, message). ⚠️ One bad row blocks the whole file unless partial mode is chosen.
 
-> ADR-008 records the approach chosen for Phase 1 ingestion. Its implementation is in progress.
+> ADR-008 is implemented in `src/adm/ingestion/importer.py` (strict by default, partial import opt-in).
+
+### ADR-009 — Fact pack retrieval by scope and focus
+- **Context:** The AI must not invent facts, and sending the whole database is wasteful and impossible to audit. Letting the AI choose what to retrieve would make retrieval non-deterministic.
+- **Decision:** The user picks a scope (programme or squad) and one of five *focus* presets. A deterministic builder selects the fact families that focus needs, ranks them, caps them at `ai.max_facts` and records how many were omitted. Every fact lists its source record IDs, and the pack is hashed (SHA-256 of canonical JSON).
+- **Consequences:** ✅ The same data and question always give the same evidence and hash, whichever provider answers; every fact traces to a record. ⚠️ Free-text questions only steer wording, not retrieval; a capped pack is a partial picture, which is why the omitted count is shown to the AI and the user.
+
+### ADR-010 — Additive `ai_review` table for human decisions
+- **Context:** `ai_output` has one `approved_by` for a whole response, but each suggested action needs its own decision, and decisions can change.
+- **Decision:** Add an `ai_review` table (output, item kind and index, decision, reviewer, comment, snapshot of the item text, timestamp). History is kept; the latest row per item is the current decision. Items the validator rejected cannot be approved. `ai_output.approved_by/at` is set when every shown recommendation has a decision. Existing tables are unchanged; `init_db` creates the table in existing databases.
+- **Consequences:** ✅ "Humans decide" is auditable item by item, including reversals. ⚠️ The column name `approved_by` really means *review completed by*; per-item decisions live in `ai_review`.
+
+### ADR-011 — Escalation and exposure are rules, not AI
+- **Context:** "Which items need leadership escalation?" and "which dependencies threaten PI objectives?" could be answered by the AI, but eligibility would then be non-deterministic and untestable. The data also has no direct dependency → objective link.
+- **Decision:** Escalation eligibility is a configurable rule (`thresholds.yaml` → `escalation`). Exposure is a rule too: a late or at-risk dependency exposes the requesting squad's committed objectives in the current PI, labelled `basis: squad-level`. The AI may prioritise and explain; it may not add candidates.
+- **Consequences:** ✅ Golden tests pin exactly seven escalation candidates and ten exposures; the control squad has none. ⚠️ Exposure is an association, not proof; the prompt and UI say so. A direct link would need a schema and data change (deferred).
+
+### ADR-012 — Versioned, immutable prompt files
+- **Context:** Prompt wording is product behaviour. If it lives in code it can change silently, and an answer can no longer be tied to the instructions that produced it.
+- **Decision:** Prompts live in `src/adm/ai/prompts/<id>/<version>.md` with front matter and sections. Templates are validated on load (sections, placeholders, version vs file name). The audit log records `id@version` and the file's SHA-256. A test pins published hashes, so changing wording means adding a new version.
+- **Consequences:** ✅ Every answer is reproducible against exact wording; prompt reviews are ordinary file reviews. ⚠️ Small wording fixes require a new version, which is deliberate.
+
+## 10. Phase 3 AI layer (as built)
+
+```mermaid
+flowchart LR
+    R[AnalysisRequest<br/>scope + focus + note] --> B[compute_rule_bundle<br/>health, escalation, exposure]
+    B --> F[build_fact_pack<br/>IDs, sources, cap, sha256]
+    F --> P[PromptRegistry.render<br/>raid_analyst@v1]
+    P --> L[LLMProvider.complete<br/>mock / OpenAI-compatible / Anthropic]
+    L --> V[grounding.validate<br/>verified / flagged / rejected]
+    V --> A[(ai_output + ai_citation)]
+    V --> U[RAID Analyst page<br/>4 layers]
+    U --> H[(ai_review)]
+```
+
+| Validation check | Outcome |
+|---|---|
+| Invalid JSON or schema mismatch (including extra fields such as `rag`) | Whole answer `invalid` |
+| No citation; unknown fact ID; unknown record ID in text | Item rejected |
+| Status assigned or changed, or a status no cited fact gives | Item rejected |
+| Record ID mentioned without citing its fact | Item flagged |
+| Number, percentage (±1 point) or date not in the cited facts | Item flagged |
+| Recommendation not linked to a shown finding, or backed only by context | Item flagged |
+
+Known limits: the checks are pattern-based (numbers written as words are not checked; unusual
+phrasing can slip through or trigger a false rejection), and they prove traceability, not
+wisdom. Human approval is the control for judgement.

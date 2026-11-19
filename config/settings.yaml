@@ -5,3 +5,7 @@ app:
 
 database:
   path: data/adm.db
+
+ai:
+  max_facts: 80          # most facts an AI analysis may receive (prioritised, rest counted)
+  max_note_chars: 500    # length limit for the user's optional note to the analyst

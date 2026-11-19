@@ -16,6 +16,12 @@ def last_closed_pi(pis: pd.DataFrame, as_of: date) -> str | None:
     return None if closed.empty else str(closed.iloc[-1]["pi_id"])
 
 
+def current_pi_id(pis: pd.DataFrame, as_of: date) -> str | None:
+    """The PI whose dates contain the as-of date."""
+    cur = pis[(pis["start_date"] <= as_of) & (pis["end_date"] >= as_of)]
+    return None if cur.empty else str(cur.iloc[0]["pi_id"])
+
+
 def objective_achievement(objectives: pd.DataFrame, pis: pd.DataFrame, squad_id: str,
                           as_of: date, thresholds: Thresholds) -> MetricResult:
     """SAFe-style: actual business value of all objectives (incl. stretch) divided by

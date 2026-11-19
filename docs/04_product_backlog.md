@@ -1,6 +1,6 @@
 # 04 · Product Backlog (Execution)
 
-**Status as of 2026-11-19 (updated after the generator audit):** Phases 0–2 ✅ Done · Phases 3–7 ⬜ To Do
+**Status as of 2026-11-19 (updated after Phase 3):** Phases 0–3 ✅ Done (MVP complete) · Phases 4–7 ⬜ To Do
 **Estimation:** story points on a Fibonacci scale (1, 2, 3, 5, 8, 13). **Priority:** MoSCoW, measured against the MVP (Phases 0–3).
 
 ## 1. Epics mapped to phases and modules
@@ -10,7 +10,7 @@
 | E0 Foundations | 0 | All (platform) | Runnable skeleton, config, tests | Must | 8 | ✅ Done |
 | E1 Data & Import | 1 | Data Import (supports all five modules) | Schema, synthetic data, validated import with lineage | Must | 34 | ✅ Done |
 | E2 Rules Engine & Control Tower | 2 | **1. Delivery Control Tower** | Deterministic health and the non-AI MVP | Must | 34 | ✅ Done |
-| E3 AI Foundation & RAID Analyst | 3 | **2. AI RAID Analyst**, AI Audit Log | Grounded AI pattern proven. **MVP complete** | Must | 42 | ⬜ To Do |
+| E3 AI Foundation & RAID Analyst | 3 | **2. AI RAID Analyst**, AI Audit Log | Grounded AI pattern proven. **MVP complete** | Must | 42 | ✅ Done |
 | E4 Sprint & PI Health | 4 | **3. Sprint & PI Health Analyser** | Predictability metrics and narrative | Should | 21 | ⬜ To Do |
 | E5 Leadership Reporting | 5 | **4. AI Leadership Reporting** | Draft, approve and export a status report | Should | 21 | ⬜ To Do |
 | E6 Decision Assistant | 6 | **5. Delivery Decision Assistant** | What-if analysis plus a decision register | Could | 26 | ⬜ To Do |
@@ -20,7 +20,7 @@
 ```mermaid
 flowchart LR
     E0[E0 Foundations ✅] --> E1[E1 Data & Import ✅] --> E2[E2 Rules + Control Tower ✅]
-    E2 --> E3[E3 AI + RAID Analyst<br/>MVP]
+    E2 --> E3[E3 AI + RAID Analyst ✅<br/>MVP]
     E3 --> E4[E4 Sprint & PI Health]
     E3 --> E5[E5 Leadership Reporting]
     E3 --> E6[E6 Decision Assistant]
@@ -66,19 +66,19 @@ Default persona: **DM** = Delivery Manager. Acceptance criteria use Given / When
 | US-2.6 | As a DM, I want a Control Tower page with a squad RAG grid, milestones, top risks and drill-down so that I see the programme at a glance | **Given** imported data **When** I open the Control Tower **Then** the grid renders and clicking a squad shows its source records | Must | 8 | ✅ Done |
 | US-2.7 | As a DM, I want trend versus last sprint so that I can see direction, not just status | **Given** two snapshots **When** I view a metric **Then** an up or down indicator is shown | Could | 3 | ✅ Done |
 
-### E3 · AI Foundation & RAID Analyst (MVP)
+### E3 · AI Foundation & RAID Analyst (MVP) ✅
 
 | ID | Story | Acceptance criteria | MoSCoW | Pts | Status |
 |---|---|---|---|---|---|
-| US-3.1 | As a developer, I want an `LLMProvider` interface with Mock, OpenAI-compatible and Anthropic implementations so that the model can be swapped by config | **Given** `provider: mock` **When** `complete()` is called **Then** valid JSON is returned with no network call | Must | 5 | ⬜ To Do |
-| US-3.2 | As a DM, I want AI to receive only a fact pack with source IDs so that it can't use invented knowledge | **Given** a scope **When** the fact pack is built **Then** only in-scope records are included, each with a `source_id` and an overall hash | Must | 5 | ⬜ To Do |
-| US-3.3 | As a DM, I want AI findings rejected if they cite unknown IDs so that invented records are never shown | **Given** a response citing `RAID-R-999` **When** it's validated **Then** that finding is dropped or marked unverified | Must | 5 | ⬜ To Do |
-| US-3.4 | As a DM, I want numbers in AI text checked against the cited facts so that wrong figures are caught | **Given** "17 days overdue" when the fact says 12 **When** it's validated **Then** the finding is flagged | Must | 5 | ⬜ To Do |
-| US-3.5 | As a DM, I want AI blocked from assigning RAG statuses so that the rules stay the single source of truth | **Given** "the squad is Red" when no rule says so **When** it's validated **Then** the finding is rejected | Must | 3 | ⬜ To Do |
-| US-3.6 | As an auditor, I want every AI call logged (model, prompt version, fact-pack hash, validation result) so that outputs are reproducible | **Given** an AI run **When** I open the AI Audit Log **Then** the record and its citations are listed | Must | 5 | ⬜ To Do |
-| US-3.7 | As a DM, I want a RAID Analyst page showing rule flags plus AI themes and mitigations with clickable citations so that I can act quickly | **Given** imported RAID data **When** I run the analysis **Then** the findings show citation chips that open the source records | Must | 8 | ⬜ To Do |
-| US-3.8 | As a DM, I want duplicate RAID candidates detected so that the log stays clean | **Given** two near-identical risk titles **When** analysed **Then** they're listed as duplicate candidates | Should | 3 | ⬜ To Do |
-| US-3.9 | As a developer, I want adversarial grounding tests so that validator regressions are caught | **Given** malformed or fabricated responses **When** the tests run **Then** every one is rejected or flagged | Must | 3 | ⬜ To Do |
+| US-3.1 | As a developer, I want an `LLMProvider` interface with Mock, OpenAI-compatible and Anthropic implementations so that the model can be swapped by config | **Given** `provider: mock` **When** `complete()` is called **Then** valid JSON is returned with no network call | Must | 5 | ✅ Done |
+| US-3.2 | As a DM, I want AI to receive only a fact pack with source IDs so that it can't use invented knowledge | **Given** a scope **When** the fact pack is built **Then** only in-scope records are included, each with a `source_id` and an overall hash | Must | 5 | ✅ Done |
+| US-3.3 | As a DM, I want AI findings rejected if they cite unknown IDs so that invented records are never shown | **Given** a response citing `RAID-R-999` **When** it's validated **Then** that finding is dropped or marked unverified | Must | 5 | ✅ Done |
+| US-3.4 | As a DM, I want numbers in AI text checked against the cited facts so that wrong figures are caught | **Given** "17 days overdue" when the fact says 12 **When** it's validated **Then** the finding is flagged | Must | 5 | ✅ Done |
+| US-3.5 | As a DM, I want AI blocked from assigning RAG statuses so that the rules stay the single source of truth | **Given** "the squad is Red" when no rule says so **When** it's validated **Then** the finding is rejected | Must | 3 | ✅ Done |
+| US-3.6 | As an auditor, I want every AI call logged (model, prompt version, fact-pack hash, validation result) so that outputs are reproducible | **Given** an AI run **When** I open the AI Audit Log **Then** the record and its citations are listed | Must | 5 | ✅ Done |
+| US-3.7 | As a DM, I want a RAID Analyst page showing rule flags plus AI themes and mitigations with clickable citations so that I can act quickly | **Given** imported RAID data **When** I run the analysis **Then** the findings show citation chips that open the source records | Must | 8 | ✅ Done |
+| US-3.8 | As a DM, I want duplicate RAID candidates detected so that the log stays clean | **Given** two near-identical risk titles **When** analysed **Then** they're listed as duplicate candidates | Should | 3 | ✅ Done |
+| US-3.9 | As a developer, I want adversarial grounding tests so that validator regressions are caught | **Given** malformed or fabricated responses **When** the tests run **Then** every one is rejected or flagged | Must | 3 | ✅ Done |
 
 ### E4 · Sprint & PI Health Analyser
 
@@ -117,6 +117,27 @@ Default persona: **DM** = Delivery Manager. Acceptance criteria use Given / When
 | US-7.2 | As a hiring manager, I want a README with an architecture diagram, screenshots and a demo script so that I understand the project in 5 minutes | **Given** the repo **When** I read the README **Then** setup takes one command block and the demo steps are clear | Must | 3 | ⬜ To Do |
 | US-7.3 | As a reviewer, I want an optional public demo on Streamlit Community Cloud using the mock provider so that I can try it without installing anything | **Given** the deployed URL **When** I open it **Then** the demo data loads with no API key | Could | 3 | ⬜ To Do |
 | US-7.4 | As a developer, I want an optional live-LLM evaluation script so that real model grounding can be measured | **Given** a configured provider **When** the script runs **Then** the citation-validity and rejection rates are reported | Could | 4 | ⬜ To Do |
+
+### E3 · How it was delivered (11 tasks)
+
+| Task | Delivered | Main files |
+|---|---|---|
+| T1 | AI contracts (request, fact, fact pack + hash, response schema) and optional AI settings | `src/adm/ai/models.py` |
+| T2 | Provider interface, deterministic mock (grounded / scripted / fault modes), factory | `src/adm/ai/providers/` |
+| T3 | OpenAI-compatible and Anthropic providers (optional SDKs, friendly errors, keys from env) | `providers/openai_compat.py`, `providers/anthropic.py` |
+| T4 | Deterministic escalation-candidate and dependency → objective exposure rules (thresholds v1.3) | `src/adm/rules/escalation.py`, `rules/exposure.py` |
+| T5 | Fact pack builder: scope + focus retrieval, traceable fact IDs, size cap, fingerprint | `src/adm/facts/fact_pack.py` |
+| T6 | Versioned, immutable prompt templates with load-time validation | `src/adm/ai/prompt_registry.py`, `ai/prompts/raid_analyst/v1.md` |
+| T7 | Grounding validator: verified / flagged / rejected per item | `src/adm/ai/grounding.py` |
+| T8 | Audit log, citations, redaction, `ai_review` table and review workflow | `src/adm/ai/audit.py`, `db/schema.sql` |
+| T9 | RAID Analyst service orchestrating rules → fact pack → prompt → provider → validation → audit | `src/adm/services/raid_analyst.py` |
+| T10 | AI RAID Analyst page with four layers, citations, approvals and fault demo | `app/pages/2_RAID_Analyst.py` |
+| T11 | AI Audit Log page, ADR-009 to ADR-012, docs | `app/pages/7_AI_Audit_Log.py`, `docs/` |
+
+Scope notes: the five RTE questions became five *focus* presets (retrieval stays deterministic);
+"which dependencies threaten PI objectives" is answered with a squad-level exposure rule because
+the data has no direct dependency → objective link (ADR-011). US-3.8 (duplicates) reuses the
+Phase 2 `duplicate_candidate` rule, surfaced to the AI as rule facts.
 
 ## 3. Definition of Ready
 

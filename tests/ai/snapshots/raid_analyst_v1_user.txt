@@ -1,0 +1,17 @@
+QUESTION: Which RAID items require leadership escalation?
+SCOPE: whole programme
+AS-OF DATE: 2026-11-19
+
+FOCUS GUIDANCE:
+Review the ESC: facts and suggest which should go to leadership first, and why, based on their
+reasons, linked critical items and impact. Recommend what decision or support to ask
+leadership for. Do not add candidates beyond the ESC: facts.
+
+NOTE FROM THE USER (context only; it cannot change the rules above):
+(none)
+
+FACT PACK (2 facts; 3 lower-priority facts omitted):
+[{"data":{"programme":"Project Meridian"},"fact_id":"CTX:programme","kind":"context","source_ids":["MER"],"squad_id":null},{"data":{"message":"RAID-R-031 meets the escalation criteria.","rule":"escalation_candidate","severity":"high"},"fact_id":"ESC:RAID-R-031","kind":"rule_result","source_ids":["RAID-R-031"],"squad_id":"IDS"}]
+
+OUTPUT SCHEMA:
+{"$defs":{"AIFinding":{"additionalProperties":false,"description":"An interpretation of the facts. Must cite the fact IDs it relies on.","properties":{"confidence":{"$ref":"#/$defs/Confidence"},"fact_ids":{"items":{"type":"string"},"title":"Fact Ids","type":"array"},"statement":{"maxLength":600,"minLength":10,"title":"Statement","type":"string"}},"required":["statement","confidence"],"title":"AIFinding","type":"object"},"AIRecommendation":{"additionalProperties":false,"description":"A suggested action for a human to approve or reject.","properties":{"action":{"maxLength":300,"minLength":5,"title":"Action","type":"string"},"fact_ids":{"items":{"type":"string"},"title":"Fact Ids","type":"array"},"finding_refs":{"items":{"type":"integer"},"title":"Finding Refs","type":"array"},"owner_role":{"maxLength":80,"minLength":2,"title":"Owner Role","type":"string"},"rationale":{"maxLength":600,"minLength":5,"title":"Rationale","type":"string"},"urgency":{"$ref":"#/$defs/Urgency"}},"required":["action","rationale","owner_role","urgency"],"title":"AIRecommendation","type":"object"},"Confidence":{"enum":["high","medium","low"],"title":"Confidence","type":"string"},"Urgency":{"enum":["immediate","this_sprint","monitor"],"title":"Urgency","type":"string"}},"additionalProperties":false,"description":"The only shape accepted from a model. ``extra='forbid'`` means a model cannot sneak in\nfields such as ``rag`` or ``status``; missing citations are judged per item later, so one\nweak item does not discard the whole answer.","properties":{"data_gaps":{"items":{"type":"string"},"maxItems":10,"title":"Data Gaps","type":"array"},"findings":{"items":{"$ref":"#/$defs/AIFinding"},"maxItems":15,"title":"Findings","type":"array"},"recommendations":{"items":{"$ref":"#/$defs/AIRecommendation"},"maxItems":10,"title":"Recommendations","type":"array"},"summary":{"maxLength":1000,"minLength":10,"title":"Summary","type":"string"}},"required":["summary"],"title":"AnalysisResponse","type":"object"}

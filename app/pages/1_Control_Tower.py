@@ -76,7 +76,7 @@ for s in report.squads:
         **{METRIC_LABELS[k]: s.metrics[k].rag for k in metric_keys},
     })
 grid, grid_rags = pd.DataFrame(display_rows), pd.DataFrame(rag_rows)
-st.dataframe(ui.style_by_rag(grid, grid_rags), hide_index=True, use_container_width=True)
+st.dataframe(ui.style_by_rag(grid, grid_rags), hide_index=True, width="stretch")
 st.caption(
     f"Ratios use the last {th.windows.say_do_sprints} closed sprints; velocity variability uses "
     f"the last {th.windows.velocity_sprints}. PI objectives use the last closed PI. "
@@ -107,7 +107,7 @@ with tabs[0]:
         rags.append({"Metric": None, "Value": m.rag, "RAG": m.rag, "Thresholds": None,
                      "How it was calculated": None, "Sources": None})
     st.dataframe(ui.style_by_rag(pd.DataFrame(rows), pd.DataFrame(rags)), hide_index=True,
-                 use_container_width=True)
+                 width="stretch")
     pick = st.selectbox("Show source records for", metric_keys,
                         format_func=lambda k: METRIC_LABELS[k], key="src-metric")
     show_records(conn, sq.metrics[pick].source_ids, key=f"src-{sid}-{pick}")
@@ -125,7 +125,7 @@ with tabs[1]:
         rags.append({"ID": None, "Milestone": None, "Squad": None, "State": m.rag, "RAG": m.rag,
                      "Slip (days)": None, "Blocked by": None, "Explanation": None})
     st.dataframe(ui.style_by_rag(pd.DataFrame(rows), pd.DataFrame(rags)), hide_index=True,
-                 use_container_width=True)
+                 width="stretch")
     st.caption(f"AMBER when forecast slips ≥ {th.milestones.amber_slip_days} day(s) past "
                f"baseline, RED at ≥ {th.milestones.red_slip_days} days or when the forecast "
                "date has passed.")
@@ -147,7 +147,7 @@ with tabs[2]:
              "Explanation": None} for d in shown]
     if rows:
         st.dataframe(ui.style_by_rag(pd.DataFrame(rows), pd.DataFrame(rags)), hide_index=True,
-                     use_container_width=True)
+                     width="stretch")
     else:
         st.info("No dependencies in the selected states.")
 
@@ -160,7 +160,7 @@ with tabs[2]:
         fig = px.imshow(matrix, text_auto=True, color_continuous_scale="Oranges", aspect="auto",
                         title="Open dependencies: who waits on whom")
         fig.update_layout(height=360, margin=dict(l=10, r=10, t=50, b=10))
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
 # --- Risks & RAID -----------------------------------------------------------------------
 with tabs[3]:
@@ -171,14 +171,14 @@ with tabs[3]:
             score=lambda df: [risk_score(r) for r in df.to_dict(orient="records")],
             mitigated=lambda df: df["mitigation"].notna().map({True: "yes", False: "NO"}),
         )[["raid_id", "squad_id", "title", "score", "owner", "mitigated"]]
-        st.dataframe(top, hide_index=True, use_container_width=True)
+        st.dataframe(top, hide_index=True, width="stretch")
     with right:
         st.markdown("**RAID hygiene findings**")
         if report.findings:
             st.dataframe(pd.DataFrame([{
                 "Rule": RULE_LABELS[f.rule], "Squad": f.squad_id or "Programme",
                 "Records": ", ".join(f.record_ids), "Severity": f.severity, "Finding": f.message,
-            } for f in report.findings]), hide_index=True, use_container_width=True)
+            } for f in report.findings]), hide_index=True, width="stretch")
         else:
             st.success("No hygiene findings.")
         st.caption("AI interpretation of these findings arrives with the RAID Analyst "
@@ -198,7 +198,7 @@ with tabs[4]:
     for y, colour in ((t.green, ui.SOLID[RAG.GREEN]), (t.amber, ui.SOLID[RAG.AMBER])):
         fig.add_hline(y=y, line_dash="dot", line_color=colour, opacity=0.7)
     fig.update_layout(yaxis_tickformat=".0%", height=420, margin=dict(l=10, r=10, t=30, b=10))
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
     st.caption(f"Closed sprints only; the in-flight sprint {report.current_sprint} is excluded. "
                "Dotted lines show the green and amber thresholds.")
 
@@ -206,7 +206,7 @@ with tabs[4]:
     fig2 = go.Figure([go.Bar(name=c, x=vel.index, y=vel[c]) for c in vel.columns])
     fig2.update_layout(barmode="group", title="Completed points per sprint", height=360,
                        margin=dict(l=10, r=10, t=50, b=10))
-    st.plotly_chart(fig2, use_container_width=True)
+    st.plotly_chart(fig2, width="stretch")
 
 # --- Record lookup ----------------------------------------------------------------------
 with tabs[5]:

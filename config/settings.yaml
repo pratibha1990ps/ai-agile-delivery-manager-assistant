@@ -1,0 +1,7 @@
+app:
+  programme_name: "Project Meridian"
+  programme_description: "Fictional retail-bank digital modernisation programme (synthetic data)"
+  as_of_date: 2026-11-19
+
+database:
+  path: data/adm.db

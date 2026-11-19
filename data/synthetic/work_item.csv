@@ -1,0 +1,635 @@
+work_item_id,feature_id,squad_id,sprint_id,type,title,story_points,status,created_date,done_date,blocked_days,carried_over_count
+DAT-0001,F-DAT-04,DAT,S01,Story,Implement event schema registry,3,Done,2026-08-02,2026-08-18,0,0
+DAT-0002,F-DAT-02,DAT,S01,Story,Add feature store table,2,Done,2026-07-23,2026-08-14,0,0
+DAT-0003,F-DAT-02,DAT,S01,Story,Build customer 360 model,3,Done,2026-08-08,2026-08-19,5,0
+DAT-0004,F-DAT-04,DAT,S01,Story,Integrate feature store table,3,Done,2026-07-21,2026-08-21,0,0
+DAT-0005,F-DAT-04,DAT,S01,Story,Implement regulatory extract,3,Done,2026-07-28,2026-08-10,0,0
+DAT-0006,F-DAT-04,DAT,S01,Story,Add PII tokenisation,2,Done,2026-07-21,2026-08-10,0,0
+DAT-0007,F-DAT-03,DAT,S01,Story,Implement data access policies,3,Done,2026-07-30,2026-08-11,0,0
+DAT-0008,F-DAT-02,DAT,S01,Story,Implement event schema registry,5,Done,2026-08-04,2026-08-18,0,0
+DAT-0009,F-DAT-04,DAT,S01,Story,Add lineage metadata capture,5,Done,2026-08-04,2026-08-13,0,0
+DAT-0010,F-DAT-01,DAT,S01,Story,Harden lakehouse partitioning,2,Done,2026-07-22,2026-08-21,0,0
+DAT-0011,F-DAT-03,DAT,S01,Story,Implement CDC ingestion pipeline,5,Done,2026-07-24,2026-08-18,0,0
+DAT-0012,F-DAT-01,DAT,S01,Story,Refactor data quality checks,5,Done,2026-08-09,2026-08-22,0,0
+DAT-0013,F-DAT-01,DAT,S01,Story,Build lineage metadata capture,8,Removed,2026-07-22,,0,0
+DAT-0014,F-DAT-04,DAT,S01,Defect,Fix missing validation in event schema registry,3,Done,2026-08-18,2026-08-19,0,0
+DAT-0015,F-DAT-03,DAT,S02,Story,Implement data access policies,3,Done,2026-08-18,2026-08-25,0,0
+DAT-0016,F-DAT-02,DAT,S02,Story,Refactor lakehouse partitioning,3,Done,2026-08-17,2026-09-06,7,0
+DAT-0017,F-DAT-02,DAT,S02,Story,Build feature store table,3,Done,2026-08-16,2026-08-28,0,0
+DAT-0018,F-DAT-01,DAT,S02,Story,Add customer 360 model,1,Not Done,2026-08-07,,0,1
+DAT-0019,F-DAT-04,DAT,S02,Story,Integrate lakehouse partitioning,2,Not Done,2026-08-05,,0,1
+DAT-0020,F-DAT-04,DAT,S02,Story,Expose data access policies,1,Not Done,2026-08-09,,4,1
+DAT-0021,F-DAT-03,DAT,S02,Story,Build regulatory extract,5,Done,2026-08-12,2026-08-24,0,0
+DAT-0022,F-DAT-02,DAT,S02,Story,Harden PII tokenisation,5,Done,2026-08-17,2026-08-27,6,0
+DAT-0023,F-DAT-03,DAT,S02,Story,Refactor lakehouse partitioning,5,Done,2026-08-19,2026-08-24,8,0
+DAT-0024,F-DAT-02,DAT,S02,Story,Implement PII tokenisation,2,Done,2026-08-05,2026-08-27,0,0
+DAT-0025,F-DAT-02,DAT,S02,Story,Build lakehouse partitioning,2,Done,2026-08-11,2026-08-27,0,0
+DAT-0026,F-DAT-02,DAT,S02,Story,Expose lakehouse partitioning,5,Done,2026-08-18,2026-08-26,0,0
+DAT-0027,F-DAT-01,DAT,S02,Story,Refactor PII tokenisation,3,Done,2026-08-05,2026-08-25,7,0
+DAT-0028,F-DAT-04,DAT,S02,Story,Refactor customer 360 model,2,Removed,2026-08-18,,0,0
+DAT-0029,F-DAT-03,DAT,S02,Defect,Fix timeout under load in event schema registry,2,Done,2026-08-29,2026-08-31,0,0
+DAT-0030,F-DAT-04,DAT,S03,Story,Automate event schema registry,1,Done,2026-09-06,2026-09-18,0,0
+DAT-0031,F-DAT-03,DAT,S03,Story,Automate customer 360 model,8,Done,2026-09-04,2026-09-11,8,0
+DAT-0032,F-DAT-04,DAT,S03,Story,Harden data access policies,3,Done,2026-08-27,2026-09-14,3,0
+DAT-0033,F-DAT-03,DAT,S03,Story,Build lineage metadata capture,5,Not Done,2026-09-05,,3,1
+DAT-0034,F-DAT-01,DAT,S03,Story,Build lakehouse partitioning,1,Done,2026-08-27,2026-09-16,0,0
+DAT-0035,F-DAT-02,DAT,S03,Story,Expose customer 360 model,3,Done,2026-09-01,2026-09-09,0,0
+DAT-0036,F-DAT-01,DAT,S03,Story,Add event schema registry,5,Done,2026-08-27,2026-09-19,0,0
+DAT-0037,F-DAT-04,DAT,S03,Story,Harden PII tokenisation,1,Done,2026-08-24,2026-09-11,8,0
+DAT-0038,F-DAT-03,DAT,S03,Story,Automate regulatory extract,5,Done,2026-08-30,2026-09-12,4,0
+DAT-0039,F-DAT-02,DAT,S03,Story,Implement data quality checks,3,Not Done,2026-09-02,,6,1
+DAT-0040,F-DAT-02,DAT,S03,Story,Expose customer 360 model,5,Done,2026-09-02,2026-09-12,0,0
+DAT-0041,F-DAT-01,DAT,S03,Story,Implement data access policies,3,Removed,2026-08-28,,0,0
+DAT-0042,F-DAT-02,DAT,S03,Defect,Fix wrong error message in customer 360 model,2,Done,2026-09-15,2026-09-16,8,0
+DAT-0043,F-DAT-02,DAT,S04,Story,Refactor regulatory extract,3,Done,2026-09-09,2026-09-23,0,0
+DAT-0044,F-DAT-03,DAT,S04,Story,Refactor regulatory extract,3,Done,2026-09-16,2026-10-03,3,0
+DAT-0045,F-DAT-03,DAT,S04,Spike,Spike: options for lineage metadata capture,3,Done,2026-09-02,2026-10-01,0,0
+DAT-0046,F-DAT-02,DAT,S04,Story,Expose event schema registry,3,Done,2026-09-06,2026-09-25,0,0
+DAT-0047,F-DAT-02,DAT,S04,Story,Expose data access policies,2,Done,2026-09-18,2026-10-01,0,0
+DAT-0048,F-DAT-04,DAT,S04,Story,Automate event schema registry,3,Done,2026-09-16,2026-09-30,0,0
+DAT-0049,F-DAT-04,DAT,S04,Story,Implement data access policies,2,Done,2026-09-03,2026-10-01,0,0
+DAT-0050,F-DAT-04,DAT,S04,Story,Implement feature store table,5,Done,2026-09-06,2026-09-22,3,0
+DAT-0051,F-DAT-04,DAT,S04,Story,Harden PII tokenisation,3,Done,2026-09-18,2026-09-23,0,0
+DAT-0052,F-DAT-04,DAT,S04,Story,Integrate feature store table,8,Done,2026-09-01,2026-10-04,0,0
+DAT-0053,F-DAT-03,DAT,S04,Story,Implement regulatory extract,3,Done,2026-09-20,2026-09-24,0,0
+DAT-0054,F-DAT-04,DAT,S04,Story,Expose customer 360 model,5,Done,2026-09-20,2026-10-01,0,0
+DAT-0055,F-DAT-03,DAT,S04,Story,Build PII tokenisation,5,Removed,2026-09-09,,0,0
+DAT-0056,F-DAT-04,DAT,S04,Defect,Fix stale cache after logout in lineage metadata capture,1,Done,2026-09-25,2026-10-04,0,0
+DAT-0057,F-DAT-03,DAT,S05,Story,Build data access policies,5,Done,2026-10-01,2026-10-17,0,0
+DAT-0058,F-DAT-02,DAT,S05,Story,Automate PII tokenisation,1,Done,2026-10-01,2026-10-09,4,0
+DAT-0059,F-DAT-03,DAT,S05,Story,Refactor CDC ingestion pipeline,2,Done,2026-09-29,2026-10-16,0,0
+DAT-0060,F-DAT-04,DAT,S05,Story,Integrate PII tokenisation,3,Not Done,2026-10-03,,4,1
+DAT-0061,F-DAT-04,DAT,S05,Story,Automate lineage metadata capture,2,Not Done,2026-09-15,,0,1
+DAT-0062,F-DAT-01,DAT,S05,Story,Add lineage metadata capture,3,Done,2026-09-16,2026-10-06,0,0
+DAT-0063,F-DAT-04,DAT,S05,Story,Automate lakehouse partitioning,2,Not Done,2026-09-19,,0,1
+DAT-0064,F-DAT-03,DAT,S05,Story,Integrate customer 360 model,2,Done,2026-09-25,2026-10-07,5,0
+DAT-0065,F-DAT-03,DAT,S05,Story,Add lakehouse partitioning,2,Not Done,2026-09-24,,0,1
+DAT-0066,F-DAT-04,DAT,S05,Story,Integrate regulatory extract,3,Done,2026-10-01,2026-10-13,0,0
+DAT-0067,F-DAT-01,DAT,S05,Story,Automate PII tokenisation,2,Done,2026-10-04,2026-10-05,0,0
+DAT-0068,F-DAT-02,DAT,S05,Story,Add feature store table,3,Done,2026-09-28,2026-10-16,0,0
+DAT-0069,F-DAT-03,DAT,S05,Story,Integrate data quality checks,3,Done,2026-09-28,2026-10-05,7,0
+DAT-0070,F-DAT-03,DAT,S05,Story,Expose lakehouse partitioning,3,Done,2026-09-23,2026-10-09,0,0
+DAT-0071,F-DAT-04,DAT,S05,Story,Implement feature store table,5,Done,2026-09-23,2026-10-12,0,0
+DAT-0072,F-DAT-03,DAT,S05,Defect,Fix UI overlap on small screens in CDC ingestion pipeline,2,Not Done,2026-10-12,,0,1
+DAT-0073,F-DAT-07,DAT,S06,Spike,Spike: options for regulatory extract,5,Done,2026-09-29,2026-11-01,0,0
+DAT-0074,F-DAT-06,DAT,S06,Story,Refactor CDC ingestion pipeline,3,Not Done,2026-10-10,,8,1
+DAT-0075,F-DAT-05,DAT,S06,Story,Integrate lineage metadata capture,3,Done,2026-10-03,2026-10-22,8,0
+DAT-0076,F-DAT-05,DAT,S06,Story,Add PII tokenisation,3,Done,2026-10-09,2026-10-28,0,0
+DAT-0077,F-DAT-05,DAT,S06,Story,Build customer 360 model,2,Not Done,2026-10-07,,3,1
+DAT-0078,F-DAT-06,DAT,S06,Story,Expose lakehouse partitioning,2,Not Done,2026-10-16,,7,1
+DAT-0079,F-DAT-07,DAT,S06,Story,Add regulatory extract,2,Done,2026-10-16,2026-10-25,4,0
+DAT-0080,F-DAT-07,DAT,S06,Story,Harden data quality checks,2,Done,2026-10-01,2026-10-20,7,0
+DAT-0081,F-DAT-07,DAT,S06,Story,Expose PII tokenisation,3,Done,2026-10-02,2026-10-21,5,0
+DAT-0082,F-DAT-07,DAT,S06,Story,Harden lakehouse partitioning,3,Done,2026-10-09,2026-10-20,0,0
+DAT-0083,F-DAT-05,DAT,S06,Story,Build regulatory extract,5,Not Done,2026-10-04,,5,1
+DAT-0084,F-DAT-06,DAT,S06,Story,Automate PII tokenisation,3,Done,2026-10-11,2026-10-26,0,0
+DAT-0085,F-DAT-05,DAT,S06,Story,Automate customer 360 model,3,Removed,2026-10-10,,0,0
+DAT-0086,F-DAT-05,DAT,S06,Defect,Fix wrong error message in data access policies,3,Done,2026-10-26,2026-10-28,0,0
+DAT-0087,F-DAT-07,DAT,S07,Story,Integrate feature store table,3,Done,2026-10-27,2026-11-03,8,0
+DAT-0088,F-DAT-06,DAT,S07,Story,Build lakehouse partitioning,2,Done,2026-10-24,2026-11-05,8,0
+DAT-0089,F-DAT-05,DAT,S07,Story,Refactor PII tokenisation,2,Not Done,2026-10-25,,0,1
+DAT-0090,F-DAT-05,DAT,S07,Story,Implement data access policies,8,Not Done,2026-10-26,,6,1
+DAT-0091,F-DAT-06,DAT,S07,Story,Add customer 360 model,3,Not Done,2026-11-01,,3,1
+DAT-0092,F-DAT-06,DAT,S07,Story,Add lakehouse partitioning,3,Done,2026-10-17,2026-11-10,6,0
+DAT-0093,F-DAT-06,DAT,S07,Spike,Spike: options for CDC ingestion pipeline,2,Done,2026-10-15,2026-11-14,5,0
+DAT-0094,F-DAT-05,DAT,S07,Story,Automate regulatory extract,3,Done,2026-10-14,2026-11-13,8,0
+DAT-0095,F-DAT-07,DAT,S07,Story,Automate feature store table,5,Done,2026-10-22,2026-11-15,0,0
+DAT-0096,F-DAT-07,DAT,S07,Story,Expose feature store table,5,Done,2026-10-28,2026-11-07,0,0
+DAT-0097,F-DAT-07,DAT,S07,Story,Build PII tokenisation,3,Removed,2026-10-13,,0,0
+DAT-0098,F-DAT-05,DAT,S07,Defect,Fix timeout under load in CDC ingestion pipeline,3,Done,2026-11-07,2026-11-09,0,0
+DAT-0099,F-DAT-06,DAT,S07,Story,Implement customer 360 model,3,Not Done,2026-11-10,,6,1
+DAT-0100,F-DAT-06,DAT,S08,Story,Automate CDC ingestion pipeline,1,In Progress,2026-11-08,,0,0
+DAT-0101,F-DAT-07,DAT,S08,Story,Refactor customer 360 model,5,To Do,2026-11-08,,0,0
+DAT-0102,F-DAT-07,DAT,S08,Story,Add data access policies,2,To Do,2026-10-28,,0,0
+DAT-0103,F-DAT-05,DAT,S08,Story,Harden CDC ingestion pipeline,5,In Progress,2026-11-07,,3,0
+DAT-0104,F-DAT-07,DAT,S08,Story,Integrate regulatory extract,8,To Do,2026-11-03,,0,0
+DAT-0105,F-DAT-05,DAT,S08,Story,Automate regulatory extract,5,Done,2026-10-29,2026-11-16,3,0
+DAT-0106,F-DAT-07,DAT,S08,Story,Add CDC ingestion pipeline,2,Done,2026-11-08,2026-11-19,0,0
+DAT-0107,F-DAT-05,DAT,S08,Story,Integrate CDC ingestion pipeline,5,Done,2026-11-12,2026-11-18,0,0
+DAT-0108,F-DAT-05,DAT,S08,Story,Add data quality checks,5,In Progress,2026-10-27,,0,0
+DAT-0109,F-DAT-06,DAT,S08,Story,Integrate data quality checks,3,Removed,2026-11-15,,0,0
+DAT-0110,F-DAT-05,DAT,S08,Defect,Fix UI overlap on small screens in PII tokenisation,2,In Progress,2026-11-22,,0,0
+DAT-0111,F-DAT-06,DAT,S08,Story,Integrate customer 360 model,3,To Do,2026-11-21,,0,0
+DAT-0112,F-DAT-07,DAT,S09,Story,Build CDC ingestion pipeline,3,To Do,2026-10-23,,0,0
+DAT-0113,F-DAT-08,DAT,S09,Story,Implement data quality checks,5,To Do,2026-11-05,,0,0
+DAT-0114,F-DAT-05,DAT,S09,Story,Expose lineage metadata capture,2,To Do,2026-10-31,,0,0
+DAT-0115,F-DAT-06,DAT,S09,Story,Integrate customer 360 model,3,To Do,2026-11-14,,0,0
+DAT-0116,F-DAT-05,DAT,S09,Story,Build data access policies,1,To Do,2026-10-24,,0,0
+DAT-0117,F-DAT-08,DAT,S09,Story,Refactor event schema registry,5,To Do,2026-11-04,,0,0
+DAT-0118,F-DAT-06,DAT,S10,Story,Expose lakehouse partitioning,2,To Do,2026-11-16,,0,0
+DAT-0119,F-DAT-06,DAT,S10,Story,Add regulatory extract,3,To Do,2026-11-17,,0,0
+DAT-0120,F-DAT-05,DAT,S10,Story,Refactor regulatory extract,2,To Do,2026-10-22,,0,0
+DAT-0121,F-DAT-06,DAT,S10,Story,Expose lakehouse partitioning,3,To Do,2026-11-06,,0,0
+DAT-0122,F-DAT-08,DAT,S10,Story,Implement CDC ingestion pipeline,2,To Do,2026-10-25,,0,0
+DAT-0123,F-DAT-07,DAT,S10,Story,Build data access policies,8,To Do,2026-10-25,,0,0
+IDS-0001,F-IDS-01,IDS,S01,Story,Automate threat model update,2,Not Done,2026-08-04,,0,1
+IDS-0002,F-IDS-01,IDS,S01,Story,Expose role mining report,2,Done,2026-07-24,2026-08-23,0,0
+IDS-0003,F-IDS-03,IDS,S01,Story,Implement session management hardening,5,Done,2026-07-23,2026-08-13,0,0
+IDS-0004,F-IDS-03,IDS,S01,Story,Refactor audit log forwarding,3,Not Done,2026-07-22,,0,1
+IDS-0005,F-IDS-04,IDS,S01,Story,Expose audit log forwarding,5,Done,2026-08-01,2026-08-13,0,0
+IDS-0006,F-IDS-01,IDS,S01,Story,Expose privileged access vault,5,Done,2026-08-08,2026-08-20,0,0
+IDS-0007,F-IDS-02,IDS,S01,Story,Harden threat model update,5,Done,2026-07-22,2026-08-15,0,0
+IDS-0008,F-IDS-04,IDS,S01,Story,Harden role mining report,3,Done,2026-07-22,2026-08-14,3,0
+IDS-0009,F-IDS-03,IDS,S01,Story,Automate role mining report,8,Done,2026-07-28,2026-08-22,0,0
+IDS-0010,F-IDS-04,IDS,S01,Defect,Fix wrong error message in secrets rotation job,1,Done,2026-08-11,2026-08-19,0,0
+IDS-0011,F-IDS-04,IDS,S02,Spike,Spike: options for secrets rotation job,3,Done,2026-08-20,2026-09-05,0,0
+IDS-0012,F-IDS-02,IDS,S02,Story,Implement token revocation service,2,Done,2026-08-11,2026-09-04,0,0
+IDS-0013,F-IDS-02,IDS,S02,Story,Integrate SSO federation for colleague apps,3,Done,2026-08-19,2026-08-28,0,0
+IDS-0014,F-IDS-01,IDS,S02,Story,Add role mining report,2,Done,2026-08-19,2026-08-28,0,0
+IDS-0015,F-IDS-02,IDS,S02,Story,Harden threat model update,2,Done,2026-08-22,2026-09-01,0,0
+IDS-0016,F-IDS-03,IDS,S02,Story,Refactor SSO federation for colleague apps,2,Done,2026-08-17,2026-08-24,0,0
+IDS-0017,F-IDS-04,IDS,S02,Story,Implement certificate lifecycle automation,2,Done,2026-08-05,2026-08-26,0,0
+IDS-0018,F-IDS-03,IDS,S02,Story,Automate threat model update,3,Done,2026-08-17,2026-08-25,0,0
+IDS-0019,F-IDS-01,IDS,S02,Story,Refactor threat model update,2,Done,2026-08-22,2026-09-05,3,0
+IDS-0020,F-IDS-02,IDS,S02,Story,Implement role mining report,3,Done,2026-08-14,2026-08-25,0,0
+IDS-0021,F-IDS-01,IDS,S02,Story,Expose role mining report,2,Not Done,2026-08-19,,1,1
+IDS-0022,F-IDS-04,IDS,S02,Story,Harden certificate lifecycle automation,3,Done,2026-08-23,2026-09-04,0,0
+IDS-0023,F-IDS-03,IDS,S02,Story,Automate audit log forwarding,3,Done,2026-08-13,2026-09-02,0,0
+IDS-0024,F-IDS-04,IDS,S02,Story,Automate secrets rotation job,5,Done,2026-08-22,2026-09-04,1,0
+IDS-0025,F-IDS-04,IDS,S02,Story,Integrate secrets rotation job,8,Removed,2026-08-22,,0,0
+IDS-0026,F-IDS-02,IDS,S02,Story,Harden role mining report,3,Done,2026-08-27,2026-09-02,0,0
+IDS-0027,F-IDS-03,IDS,S03,Story,Integrate threat model update,8,Done,2026-08-23,2026-09-09,0,0
+IDS-0028,F-IDS-01,IDS,S03,Story,Expose secrets rotation job,3,Done,2026-08-21,2026-09-13,1,0
+IDS-0029,F-IDS-02,IDS,S03,Story,Add MFA step-up policy,3,Not Done,2026-08-27,,0,1
+IDS-0030,F-IDS-01,IDS,S03,Story,Refactor SSO federation for colleague apps,5,Done,2026-08-28,2026-09-13,0,0
+IDS-0031,F-IDS-02,IDS,S03,Story,Expose SSO federation for colleague apps,5,Done,2026-08-27,2026-09-08,0,0
+IDS-0032,F-IDS-02,IDS,S03,Story,Add SSO federation for colleague apps,3,Done,2026-08-22,2026-09-15,0,0
+IDS-0033,F-IDS-03,IDS,S03,Story,Automate token revocation service,3,Done,2026-08-31,2026-09-19,0,0
+IDS-0034,F-IDS-03,IDS,S03,Story,Integrate session management hardening,5,Not Done,2026-08-25,,1,1
+IDS-0035,F-IDS-01,IDS,S03,Story,Harden MFA step-up policy,8,Done,2026-09-01,2026-09-09,0,0
+IDS-0036,F-IDS-04,IDS,S04,Story,Harden audit log forwarding,2,Done,2026-09-16,2026-10-03,0,0
+IDS-0037,F-IDS-01,IDS,S04,Story,Harden SSO federation for colleague apps,2,Done,2026-09-08,2026-09-27,0,0
+IDS-0038,F-IDS-02,IDS,S04,Story,Refactor certificate lifecycle automation,3,Done,2026-09-02,2026-09-30,0,0
+IDS-0039,F-IDS-02,IDS,S04,Story,Expose role mining report,3,Done,2026-09-15,2026-09-22,0,0
+IDS-0040,F-IDS-03,IDS,S04,Story,Build MFA step-up policy,2,Done,2026-09-16,2026-09-24,0,0
+IDS-0041,F-IDS-02,IDS,S04,Story,Add certificate lifecycle automation,3,Done,2026-09-15,2026-09-24,0,0
+IDS-0042,F-IDS-02,IDS,S04,Story,Refactor secrets rotation job,2,Done,2026-09-15,2026-09-23,0,0
+IDS-0043,F-IDS-03,IDS,S04,Story,Add threat model update,8,Done,2026-09-15,2026-09-29,0,0
+IDS-0044,F-IDS-03,IDS,S04,Story,Harden privileged access vault,2,Done,2026-09-05,2026-09-24,0,0
+IDS-0045,F-IDS-01,IDS,S04,Story,Implement audit log forwarding,5,Done,2026-09-17,2026-10-04,3,0
+IDS-0046,F-IDS-04,IDS,S04,Story,Harden token revocation service,3,Done,2026-09-20,2026-09-28,0,0
+IDS-0047,F-IDS-03,IDS,S04,Story,Expose session management hardening,8,Removed,2026-09-17,,0,0
+IDS-0048,F-IDS-03,IDS,S04,Story,Build certificate lifecycle automation,3,Done,2026-09-26,2026-10-03,0,0
+IDS-0049,F-IDS-03,IDS,S05,Story,Build role mining report,2,Done,2026-09-24,2026-10-13,0,0
+IDS-0050,F-IDS-01,IDS,S05,Story,Refactor secrets rotation job,5,Done,2026-09-16,2026-10-12,0,0
+IDS-0051,F-IDS-04,IDS,S05,Story,Build certificate lifecycle automation,2,Done,2026-09-15,2026-10-08,0,0
+IDS-0052,F-IDS-01,IDS,S05,Story,Harden MFA step-up policy,2,Done,2026-10-01,2026-10-15,0,0
+IDS-0053,F-IDS-04,IDS,S05,Story,Build role mining report,5,Done,2026-10-02,2026-10-12,0,0
+IDS-0054,F-IDS-01,IDS,S05,Story,Harden MFA step-up policy,3,Done,2026-09-25,2026-10-09,0,0
+IDS-0055,F-IDS-04,IDS,S05,Story,Refactor session management hardening,8,Done,2026-09-24,2026-10-15,3,0
+IDS-0056,F-IDS-02,IDS,S05,Story,Expose SSO federation for colleague apps,2,Done,2026-10-01,2026-10-17,0,0
+IDS-0057,F-IDS-02,IDS,S05,Story,Implement threat model update,2,Done,2026-09-20,2026-10-05,0,0
+IDS-0058,F-IDS-03,IDS,S05,Story,Expose session management hardening,3,Done,2026-09-17,2026-10-10,0,0
+IDS-0059,F-IDS-03,IDS,S05,Story,Integrate role mining report,8,Done,2026-09-27,2026-10-07,0,0
+IDS-0060,F-IDS-04,IDS,S05,Story,Integrate secrets rotation job,2,Removed,2026-10-04,,0,0
+IDS-0061,F-IDS-04,IDS,S05,Defect,Fix UI overlap on small screens in MFA step-up policy,1,Done,2026-10-07,2026-10-09,0,0
+IDS-0062,F-IDS-07,IDS,S06,Story,Integrate token revocation service,3,Done,2026-09-30,2026-10-19,0,0
+IDS-0063,F-IDS-05,IDS,S06,Story,Refactor MFA step-up policy,3,Done,2026-10-18,2026-10-19,0,0
+IDS-0064,F-IDS-05,IDS,S06,Story,Implement SSO federation for colleague apps,2,Done,2026-10-10,2026-10-22,0,0
+IDS-0065,F-IDS-06,IDS,S06,Story,Expose MFA step-up policy,3,Done,2026-10-13,2026-10-27,2,0
+IDS-0066,F-IDS-06,IDS,S06,Story,Build role mining report,2,Done,2026-10-07,2026-10-20,0,0
+IDS-0067,F-IDS-07,IDS,S06,Story,Integrate certificate lifecycle automation,5,Not Done,2026-10-18,,1,1
+IDS-0068,F-IDS-07,IDS,S06,Story,Implement token revocation service,5,Not Done,2026-09-29,,0,1
+IDS-0069,F-IDS-06,IDS,S06,Story,Add audit log forwarding,2,Done,2026-10-05,2026-10-26,3,0
+IDS-0070,F-IDS-07,IDS,S06,Story,Expose role mining report,3,Done,2026-10-01,2026-10-24,0,0
+IDS-0071,F-IDS-05,IDS,S06,Story,Automate SSO federation for colleague apps,2,Done,2026-10-14,2026-10-31,2,0
+IDS-0072,F-IDS-05,IDS,S06,Story,Automate threat model update,5,Done,2026-10-05,2026-10-30,0,0
+IDS-0073,F-IDS-05,IDS,S06,Defect,Fix timeout under load in token revocation service,1,Done,2026-10-24,2026-10-25,2,0
+IDS-0074,F-IDS-07,IDS,S06,Story,Expose privileged access vault,3,Done,2026-10-26,2026-11-01,0,0
+IDS-0075,F-IDS-05,IDS,S07,Spike,Spike: options for session management hardening,3,Done,2026-10-16,2026-11-13,0,0
+IDS-0076,F-IDS-07,IDS,S07,Story,Harden session management hardening,8,Done,2026-10-16,2026-11-09,0,0
+IDS-0077,F-IDS-07,IDS,S07,Story,Refactor token revocation service,3,Done,2026-10-21,2026-11-12,0,0
+IDS-0078,F-IDS-07,IDS,S07,Story,Harden privileged access vault,2,Done,2026-10-17,2026-11-05,0,0
+IDS-0079,F-IDS-07,IDS,S07,Story,Integrate secrets rotation job,5,Not Done,2026-10-14,,0,1
+IDS-0080,F-IDS-06,IDS,S07,Story,Build MFA step-up policy,8,Done,2026-10-24,2026-11-02,0,0
+IDS-0081,F-IDS-06,IDS,S07,Story,Harden certificate lifecycle automation,8,Done,2026-10-24,2026-11-14,0,0
+IDS-0082,F-IDS-07,IDS,S07,Story,Build audit log forwarding,2,Done,2026-11-04,2026-11-07,0,0
+IDS-0083,F-IDS-05,IDS,S08,Story,Integrate role mining report,3,Done,2026-11-15,2026-11-17,0,0
+IDS-0084,F-IDS-06,IDS,S08,Story,Build role mining report,3,In Progress,2026-11-10,,0,0
+IDS-0085,F-IDS-07,IDS,S08,Story,Integrate threat model update,5,In Progress,2026-11-11,,0,0
+IDS-0086,F-IDS-06,IDS,S08,Story,Refactor token revocation service,3,To Do,2026-10-30,,0,0
+IDS-0087,F-IDS-05,IDS,S08,Story,Integrate SSO federation for colleague apps,5,In Progress,2026-11-08,,0,0
+IDS-0088,F-IDS-06,IDS,S08,Story,Build session management hardening,2,To Do,2026-11-09,,1,0
+IDS-0089,F-IDS-05,IDS,S08,Story,Implement MFA step-up policy,5,Done,2026-11-13,2026-11-18,0,0
+IDS-0090,F-IDS-07,IDS,S08,Story,Build MFA step-up policy,2,Done,2026-11-15,2026-11-19,0,0
+IDS-0091,F-IDS-07,IDS,S08,Story,Implement MFA step-up policy,1,To Do,2026-11-01,,0,0
+IDS-0092,F-IDS-07,IDS,S08,Story,Implement certificate lifecycle automation,5,In Progress,2026-10-30,,0,0
+IDS-0093,F-IDS-05,IDS,S08,Story,Build MFA step-up policy,3,Removed,2026-11-04,,0,0
+IDS-0094,F-IDS-06,IDS,S08,Defect,Fix missing validation in role mining report,1,To Do,2026-11-21,,0,0
+IDS-0095,F-IDS-06,IDS,S08,Story,Refactor MFA step-up policy,2,In Progress,2026-11-20,,0,0
+IDS-0096,F-IDS-07,IDS,S09,Spike,Spike: options for SSO federation for colleague apps,3,To Do,2026-10-28,,0,0
+IDS-0097,F-IDS-08,IDS,S09,Story,Add privileged access vault,5,To Do,2026-11-14,,0,0
+IDS-0098,F-IDS-06,IDS,S09,Story,Integrate certificate lifecycle automation,5,To Do,2026-11-17,,0,0
+IDS-0099,F-IDS-08,IDS,S09,Story,Harden SSO federation for colleague apps,3,To Do,2026-10-24,,0,0
+IDS-0100,F-IDS-06,IDS,S09,Story,Implement session management hardening,3,To Do,2026-10-22,,0,0
+IDS-0101,F-IDS-05,IDS,S09,Story,Implement audit log forwarding,2,To Do,2026-11-09,,0,0
+IDS-0102,F-IDS-07,IDS,S10,Story,Expose privileged access vault,3,To Do,2026-10-27,,0,0
+IDS-0103,F-IDS-06,IDS,S10,Story,Build token revocation service,2,To Do,2026-11-14,,0,0
+IDS-0104,F-IDS-06,IDS,S10,Story,Implement token revocation service,3,To Do,2026-11-14,,0,0
+IDS-0105,F-IDS-06,IDS,S10,Story,Build token revocation service,8,To Do,2026-11-08,,0,0
+IDS-0106,F-IDS-08,IDS,S10,Story,Integrate secrets rotation job,2,To Do,2026-11-09,,0,0
+IDS-0107,F-IDS-05,IDS,S10,Story,Build privileged access vault,3,To Do,2026-11-01,,0,0
+MOB-0001,F-MOB-02,MOB,S01,Story,Automate card freeze toggle,2,Not Done,2026-08-06,,0,1
+MOB-0002,F-MOB-03,MOB,S01,Story,Build app store release pipeline,2,Done,2026-08-09,2026-08-18,0,0
+MOB-0003,F-MOB-04,MOB,S01,Story,Expose spending insights widget,2,Done,2026-07-21,2026-08-20,0,0
+MOB-0004,F-MOB-01,MOB,S01,Story,Automate accessibility fixes pass,5,Done,2026-07-28,2026-08-22,0,0
+MOB-0005,F-MOB-02,MOB,S01,Story,Build accessibility fixes pass,5,Not Done,2026-08-05,,0,1
+MOB-0006,F-MOB-01,MOB,S01,Story,Build transaction search,5,Done,2026-08-06,2026-08-16,0,0
+MOB-0007,F-MOB-04,MOB,S01,Story,Implement transaction search,2,Done,2026-08-04,2026-08-20,3,0
+MOB-0008,F-MOB-04,MOB,S01,Story,Build card freeze toggle,8,Done,2026-07-21,2026-08-22,0,0
+MOB-0009,F-MOB-03,MOB,S01,Story,Implement in-app chat entry,3,Done,2026-08-02,2026-08-18,0,0
+MOB-0010,F-MOB-03,MOB,S01,Story,Refactor biometric login screen,3,Done,2026-08-05,2026-08-14,1,0
+MOB-0011,F-MOB-01,MOB,S01,Story,Add card freeze toggle,3,Done,2026-08-06,2026-08-16,0,0
+MOB-0012,F-MOB-01,MOB,S01,Story,Add transaction search,5,Done,2026-08-03,2026-08-18,0,0
+MOB-0013,F-MOB-03,MOB,S01,Story,Build in-app chat entry,1,Removed,2026-07-26,,0,0
+MOB-0014,F-MOB-04,MOB,S01,Story,Add in-app chat entry,2,Removed,2026-08-05,,0,0
+MOB-0015,F-MOB-03,MOB,S01,Story,Integrate in-app chat entry,3,Done,2026-08-18,2026-08-23,0,0
+MOB-0016,F-MOB-04,MOB,S01,Story,Expose offline mode cache,3,Done,2026-08-17,2026-08-19,0,0
+MOB-0017,F-MOB-04,MOB,S02,Story,Refactor card freeze toggle,5,Not Done,2026-08-08,,0,1
+MOB-0018,F-MOB-04,MOB,S02,Story,Integrate offline mode cache,8,Done,2026-08-04,2026-09-01,0,0
+MOB-0019,F-MOB-04,MOB,S02,Story,Add offline mode cache,3,Done,2026-08-08,2026-08-31,0,0
+MOB-0020,F-MOB-01,MOB,S02,Story,Harden in-app chat entry,5,Not Done,2026-08-07,,2,1
+MOB-0021,F-MOB-01,MOB,S02,Story,Automate push notification service,2,Done,2026-08-16,2026-09-01,0,0
+MOB-0022,F-MOB-01,MOB,S02,Story,Refactor card freeze toggle,1,Not Done,2026-08-13,,0,1
+MOB-0023,F-MOB-01,MOB,S02,Story,Expose biometric login screen,5,Done,2026-08-08,2026-08-29,0,0
+MOB-0024,F-MOB-02,MOB,S02,Spike,Spike: options for push notification service,2,Not Done,2026-08-22,,0,1
+MOB-0025,F-MOB-04,MOB,S02,Story,Harden offline mode cache,5,Not Done,2026-08-19,,0,1
+MOB-0026,F-MOB-04,MOB,S02,Story,Automate offline mode cache,3,Removed,2026-08-18,,0,0
+MOB-0027,F-MOB-04,MOB,S02,Defect,Fix stale cache after logout in spending insights widget,3,Done,2026-09-01,2026-09-04,0,0
+MOB-0028,F-MOB-01,MOB,S02,Defect,Fix missing validation in app store release pipeline,1,Done,2026-08-27,2026-09-06,2,0
+MOB-0029,F-MOB-02,MOB,S03,Story,Expose transaction search,2,Done,2026-08-19,2026-09-20,0,0
+MOB-0030,F-MOB-02,MOB,S03,Story,Expose in-app chat entry,2,Done,2026-08-27,2026-09-13,0,0
+MOB-0031,F-MOB-04,MOB,S03,Story,Implement accessibility fixes pass,2,Done,2026-09-01,2026-09-18,0,0
+MOB-0032,F-MOB-01,MOB,S03,Story,Refactor accessibility fixes pass,5,Done,2026-09-01,2026-09-10,0,0
+MOB-0033,F-MOB-01,MOB,S03,Story,Harden card freeze toggle,5,Done,2026-09-02,2026-09-13,0,0
+MOB-0034,F-MOB-03,MOB,S03,Story,Refactor biometric login screen,3,Done,2026-08-19,2026-09-15,0,0
+MOB-0035,F-MOB-01,MOB,S03,Story,Add payee management screen,5,Done,2026-08-24,2026-09-10,0,0
+MOB-0036,F-MOB-03,MOB,S03,Story,Harden push notification service,5,Done,2026-08-22,2026-09-12,0,0
+MOB-0037,F-MOB-02,MOB,S03,Story,Expose accessibility fixes pass,3,Done,2026-08-19,2026-09-18,0,0
+MOB-0038,F-MOB-02,MOB,S03,Story,Add card freeze toggle,5,Done,2026-08-19,2026-09-09,0,0
+MOB-0039,F-MOB-02,MOB,S03,Story,Automate app store release pipeline,3,Done,2026-08-29,2026-09-19,1,0
+MOB-0040,F-MOB-02,MOB,S03,Story,Harden accessibility fixes pass,3,Done,2026-08-31,2026-09-19,0,0
+MOB-0041,F-MOB-01,MOB,S03,Story,Integrate push notification service,2,Done,2026-08-22,2026-09-09,0,0
+MOB-0042,F-MOB-02,MOB,S03,Spike,Spike: options for transaction search,2,Done,2026-09-03,2026-09-08,0,0
+MOB-0043,F-MOB-03,MOB,S03,Story,Refactor in-app chat entry,3,Done,2026-08-23,2026-09-08,0,0
+MOB-0044,F-MOB-04,MOB,S03,Story,Build offline mode cache,2,Removed,2026-08-23,,0,0
+MOB-0045,F-MOB-02,MOB,S03,Story,Add offline mode cache,3,Removed,2026-08-19,,0,0
+MOB-0046,F-MOB-01,MOB,S03,Story,Refactor card freeze toggle,3,Done,2026-09-11,2026-09-13,3,0
+MOB-0047,F-MOB-03,MOB,S03,Story,Build push notification service,2,Done,2026-09-13,2026-09-20,0,0
+MOB-0048,F-MOB-03,MOB,S04,Story,Implement in-app chat entry,5,Not Done,2026-09-13,,0,1
+MOB-0049,F-MOB-01,MOB,S04,Story,Add app store release pipeline,1,Not Done,2026-09-10,,0,1
+MOB-0050,F-MOB-03,MOB,S04,Story,Add biometric login screen,3,Done,2026-09-20,2026-10-04,0,0
+MOB-0051,F-MOB-04,MOB,S04,Story,Implement push notification service,3,Not Done,2026-09-01,,2,1
+MOB-0052,F-MOB-02,MOB,S04,Story,Expose app store release pipeline,8,Done,2026-09-11,2026-09-30,0,0
+MOB-0053,F-MOB-01,MOB,S04,Story,Expose spending insights widget,3,Done,2026-09-06,2026-09-28,0,0
+MOB-0054,F-MOB-04,MOB,S04,Story,Add transaction search,3,Done,2026-09-01,2026-09-27,0,0
+MOB-0055,F-MOB-03,MOB,S04,Story,Integrate spending insights widget,5,Not Done,2026-09-04,,0,1
+MOB-0056,F-MOB-01,MOB,S04,Story,Build spending insights widget,5,Done,2026-09-04,2026-09-22,0,0
+MOB-0057,F-MOB-03,MOB,S04,Story,Refactor push notification service,3,Removed,2026-09-17,,0,0
+MOB-0058,F-MOB-04,MOB,S04,Story,Harden card freeze toggle,3,Done,2026-09-28,2026-09-29,0,0
+MOB-0059,F-MOB-01,MOB,S04,Story,Integrate transaction search,3,Not Done,2026-09-23,,0,1
+MOB-0060,F-MOB-03,MOB,S05,Story,Refactor transaction search,2,Done,2026-09-20,2026-10-12,0,0
+MOB-0061,F-MOB-02,MOB,S05,Spike,Spike: options for in-app chat entry,3,Done,2026-10-01,2026-10-09,0,0
+MOB-0062,F-MOB-02,MOB,S05,Story,Automate spending insights widget,1,Done,2026-09-19,2026-10-11,0,0
+MOB-0063,F-MOB-02,MOB,S05,Story,Automate card freeze toggle,5,Done,2026-09-30,2026-10-08,0,0
+MOB-0064,F-MOB-02,MOB,S05,Story,Build card freeze toggle,5,Done,2026-09-16,2026-10-12,0,0
+MOB-0065,F-MOB-04,MOB,S05,Story,Build in-app chat entry,2,Done,2026-09-15,2026-10-13,0,0
+MOB-0066,F-MOB-02,MOB,S05,Story,Refactor spending insights widget,5,Done,2026-09-22,2026-10-07,0,0
+MOB-0067,F-MOB-01,MOB,S05,Story,Automate card freeze toggle,3,Done,2026-09-30,2026-10-06,0,0
+MOB-0068,F-MOB-03,MOB,S05,Story,Implement in-app chat entry,3,Done,2026-09-17,2026-10-13,0,0
+MOB-0069,F-MOB-03,MOB,S05,Story,Implement in-app chat entry,2,Done,2026-10-04,2026-10-08,0,0
+MOB-0070,F-MOB-02,MOB,S05,Story,Implement payee management screen,5,Done,2026-09-22,2026-10-18,0,0
+MOB-0071,F-MOB-01,MOB,S05,Story,Refactor offline mode cache,2,Done,2026-10-02,2026-10-09,2,0
+MOB-0072,F-MOB-04,MOB,S05,Story,Automate push notification service,3,Done,2026-09-24,2026-10-05,0,0
+MOB-0073,F-MOB-02,MOB,S05,Story,Integrate offline mode cache,5,Done,2026-10-01,2026-10-16,0,0
+MOB-0074,F-MOB-03,MOB,S05,Story,Integrate transaction search,5,Removed,2026-09-23,,0,0
+MOB-0075,F-MOB-04,MOB,S05,Defect,Fix wrong error message in push notification service,1,Done,2026-10-10,2026-10-11,0,0
+MOB-0076,F-MOB-01,MOB,S05,Defect,Fix timeout under load in biometric login screen,1,Done,2026-10-06,2026-10-16,0,0
+MOB-0077,F-MOB-02,MOB,S05,Story,Automate transaction search,3,Done,2026-10-13,2026-10-15,0,0
+MOB-0078,F-MOB-06,MOB,S06,Story,Build accessibility fixes pass,2,Done,2026-10-09,2026-10-26,0,0
+MOB-0079,F-MOB-07,MOB,S06,Story,Harden offline mode cache,2,Not Done,2026-10-05,,0,1
+MOB-0080,F-MOB-07,MOB,S06,Story,Integrate offline mode cache,1,Done,2026-10-05,2026-10-22,2,0
+MOB-0081,F-MOB-06,MOB,S06,Spike,Spike: options for push notification service,8,Not Done,2026-10-11,,0,1
+MOB-0082,F-MOB-05,MOB,S06,Story,Expose card freeze toggle,1,Done,2026-10-11,2026-11-01,0,0
+MOB-0083,F-MOB-06,MOB,S06,Story,Add app store release pipeline,2,Done,2026-10-04,2026-10-19,3,0
+MOB-0084,F-MOB-06,MOB,S06,Spike,Spike: options for payee management screen,8,Not Done,2026-10-04,,0,1
+MOB-0085,F-MOB-05,MOB,S06,Story,Build app store release pipeline,3,Not Done,2026-09-30,,0,1
+MOB-0086,F-MOB-05,MOB,S06,Story,Refactor push notification service,5,Done,2026-09-30,2026-10-29,0,0
+MOB-0087,F-MOB-05,MOB,S06,Defect,Fix wrong error message in card freeze toggle,1,Done,2026-10-25,2026-10-29,0,0
+MOB-0088,F-MOB-06,MOB,S06,Defect,Fix crash on resume in payee management screen,3,Not Done,2026-10-24,,0,1
+MOB-0089,F-MOB-07,MOB,S06,Defect,Fix missing validation in transaction search,3,Not Done,2026-10-25,,2,1
+MOB-0090,F-MOB-05,MOB,S06,Defect,Fix timeout under load in offline mode cache,1,Not Done,2026-10-25,,0,1
+MOB-0091,F-MOB-07,MOB,S06,Defect,Fix incorrect rounding in app store release pipeline,2,Not Done,2026-10-21,,0,1
+MOB-0092,F-MOB-07,MOB,S06,Defect,Fix timeout under load in spending insights widget,1,Not Done,2026-10-23,,0,1
+MOB-0093,F-MOB-05,MOB,S06,Defect,Fix crash on resume in accessibility fixes pass,2,Done,2026-10-26,2026-10-28,0,0
+MOB-0094,F-MOB-07,MOB,S06,Defect,Fix stale cache after logout in app store release pipeline,2,Done,2026-10-27,2026-10-30,0,0
+MOB-0095,F-MOB-07,MOB,S07,Story,Harden biometric login screen,2,Done,2026-10-17,2026-11-02,0,0
+MOB-0096,F-MOB-06,MOB,S07,Story,Expose spending insights widget,1,Not Done,2026-10-21,,0,1
+MOB-0097,F-MOB-07,MOB,S07,Story,Expose app store release pipeline,3,Not Done,2026-11-01,,0,1
+MOB-0098,F-MOB-07,MOB,S07,Story,Implement card freeze toggle,2,Done,2026-10-21,2026-11-02,0,0
+MOB-0099,F-MOB-05,MOB,S07,Story,Integrate accessibility fixes pass,3,Done,2026-11-01,2026-11-06,0,0
+MOB-0100,F-MOB-07,MOB,S07,Story,Integrate spending insights widget,2,Not Done,2026-10-13,,2,1
+MOB-0101,F-MOB-05,MOB,S07,Story,Automate biometric login screen,5,Not Done,2026-10-20,,0,1
+MOB-0102,F-MOB-05,MOB,S07,Story,Implement app store release pipeline,3,Not Done,2026-10-15,,0,1
+MOB-0103,F-MOB-06,MOB,S07,Story,Harden transaction search,5,Not Done,2026-10-18,,0,1
+MOB-0104,F-MOB-06,MOB,S07,Story,Add app store release pipeline,3,Done,2026-10-15,2026-11-14,0,0
+MOB-0105,F-MOB-06,MOB,S07,Story,Implement biometric login screen,1,Done,2026-11-01,2026-11-10,0,0
+MOB-0106,F-MOB-05,MOB,S07,Story,Expose spending insights widget,2,Done,2026-10-14,2026-11-08,0,0
+MOB-0107,F-MOB-06,MOB,S07,Story,Harden transaction search,8,Done,2026-10-21,2026-11-03,0,0
+MOB-0108,F-MOB-06,MOB,S07,Story,Implement card freeze toggle,3,Not Done,2026-10-23,,0,1
+MOB-0109,F-MOB-07,MOB,S07,Story,Automate offline mode cache,1,Removed,2026-10-29,,0,0
+MOB-0110,F-MOB-06,MOB,S07,Defect,Fix incorrect rounding in payee management screen,1,Not Done,2026-11-03,,0,1
+MOB-0111,F-MOB-07,MOB,S07,Defect,Fix timeout under load in payee management screen,1,Done,2026-11-03,2026-11-13,0,0
+MOB-0112,F-MOB-05,MOB,S07,Defect,Fix stale cache after logout in offline mode cache,3,Done,2026-11-09,2026-11-14,0,0
+MOB-0113,F-MOB-07,MOB,S07,Defect,Fix timeout under load in push notification service,1,Done,2026-11-03,2026-11-07,0,0
+MOB-0114,F-MOB-06,MOB,S07,Defect,Fix UI overlap on small screens in push notification service,3,Done,2026-11-06,2026-11-14,0,0
+MOB-0115,F-MOB-07,MOB,S07,Defect,Fix missing validation in spending insights widget,2,Not Done,2026-11-04,,0,1
+MOB-0116,F-MOB-07,MOB,S07,Defect,Fix UI overlap on small screens in offline mode cache,3,Not Done,2026-11-04,,0,1
+MOB-0117,F-MOB-07,MOB,S08,Story,Add biometric login screen,2,To Do,2026-11-03,,0,0
+MOB-0118,F-MOB-07,MOB,S08,Story,Add push notification service,3,In Progress,2026-11-04,,0,0
+MOB-0119,F-MOB-05,MOB,S08,Spike,Spike: options for app store release pipeline,3,In Progress,2026-11-13,,0,0
+MOB-0120,F-MOB-07,MOB,S08,Story,Automate payee management screen,2,Done,2026-11-10,2026-11-18,0,0
+MOB-0121,F-MOB-06,MOB,S08,Story,Expose push notification service,1,To Do,2026-11-15,,0,0
+MOB-0122,F-MOB-07,MOB,S08,Story,Expose accessibility fixes pass,3,To Do,2026-11-07,,3,0
+MOB-0123,F-MOB-07,MOB,S08,Story,Add offline mode cache,3,Done,2026-11-05,2026-11-19,0,0
+MOB-0124,F-MOB-06,MOB,S08,Story,Refactor offline mode cache,8,Done,2026-11-08,2026-11-16,0,0
+MOB-0125,F-MOB-06,MOB,S08,Story,Expose offline mode cache,3,In Progress,2026-11-09,,1,0
+MOB-0126,F-MOB-07,MOB,S08,Story,Implement transaction search,2,Done,2026-11-10,2026-11-16,0,0
+MOB-0127,F-MOB-05,MOB,S08,Story,Implement transaction search,1,To Do,2026-11-06,,0,0
+MOB-0128,F-MOB-06,MOB,S08,Story,Automate in-app chat entry,5,Done,2026-11-08,2026-11-18,0,0
+MOB-0129,F-MOB-06,MOB,S08,Story,Automate offline mode cache,3,To Do,2026-10-31,,0,0
+MOB-0130,F-MOB-06,MOB,S08,Story,Harden card freeze toggle,2,To Do,2026-11-09,,0,0
+MOB-0131,F-MOB-07,MOB,S08,Story,Automate biometric login screen,5,Done,2026-11-12,2026-11-16,0,0
+MOB-0132,F-MOB-07,MOB,S08,Story,Harden accessibility fixes pass,2,Removed,2026-10-27,,0,0
+MOB-0133,F-MOB-06,MOB,S08,Defect,Fix timeout under load in in-app chat entry,1,In Progress,2026-11-21,,0,0
+MOB-0134,F-MOB-07,MOB,S08,Defect,Fix missing validation in transaction search,3,In Progress,2026-11-19,,0,0
+MOB-0135,F-MOB-07,MOB,S08,Defect,Fix timeout under load in in-app chat entry,1,To Do,2026-11-20,,0,0
+MOB-0136,F-MOB-05,MOB,S08,Defect,Fix stale cache after logout in offline mode cache,2,In Progress,2026-11-21,,3,0
+MOB-0137,F-MOB-05,MOB,S08,Defect,Fix UI overlap on small screens in push notification service,2,Done,2026-11-18,2026-11-19,0,0
+MOB-0138,F-MOB-07,MOB,S09,Story,Implement in-app chat entry,2,To Do,2026-10-29,,0,0
+MOB-0139,F-MOB-08,MOB,S09,Story,Add accessibility fixes pass,3,To Do,2026-11-15,,0,0
+MOB-0140,F-MOB-05,MOB,S09,Story,Integrate app store release pipeline,3,To Do,2026-11-09,,0,0
+MOB-0141,F-MOB-08,MOB,S09,Story,Harden accessibility fixes pass,2,To Do,2026-11-12,,0,0
+MOB-0142,F-MOB-07,MOB,S09,Story,Harden in-app chat entry,3,To Do,2026-11-11,,0,0
+MOB-0143,F-MOB-05,MOB,S09,Story,Build spending insights widget,3,To Do,2026-11-18,,0,0
+MOB-0144,F-MOB-05,MOB,S09,Story,Expose push notification service,5,To Do,2026-10-28,,0,0
+MOB-0145,F-MOB-06,MOB,S09,Story,Integrate app store release pipeline,3,To Do,2026-10-22,,0,0
+MOB-0146,F-MOB-08,MOB,S10,Story,Implement payee management screen,3,To Do,2026-11-16,,0,0
+MOB-0147,F-MOB-05,MOB,S10,Story,Automate transaction search,5,To Do,2026-11-06,,0,0
+MOB-0148,F-MOB-07,MOB,S10,Story,Refactor transaction search,3,To Do,2026-10-27,,0,0
+MOB-0149,F-MOB-05,MOB,S10,Story,Automate push notification service,3,To Do,2026-11-11,,0,0
+MOB-0150,F-MOB-05,MOB,S10,Story,Integrate spending insights widget,1,To Do,2026-10-20,,0,0
+MOB-0151,F-MOB-08,MOB,S10,Story,Implement card freeze toggle,8,To Do,2026-10-28,,0,0
+MOB-0152,F-MOB-06,MOB,S10,Story,Automate offline mode cache,5,To Do,2026-11-03,,0,0
+ONB-0001,F-ONB-02,ONB,S01,Story,Implement sanctions screening call,8,Not Done,2026-07-26,,0,1
+ONB-0002,F-ONB-03,ONB,S01,Story,Add applicant risk scoring,5,Done,2026-07-24,2026-08-12,0,0
+ONB-0003,F-ONB-04,ONB,S01,Story,Add sanctions screening call,2,Done,2026-07-31,2026-08-15,2,0
+ONB-0004,F-ONB-03,ONB,S01,Story,Implement ID&V fallback flow,5,Done,2026-08-07,2026-08-20,0,0
+ONB-0005,F-ONB-03,ONB,S01,Story,Add onboarding case dashboard,2,Done,2026-07-23,2026-08-15,0,0
+ONB-0006,F-ONB-03,ONB,S01,Story,Refactor consent capture,3,Done,2026-08-06,2026-08-13,0,0
+ONB-0007,F-ONB-01,ONB,S01,Story,Build onboarding case dashboard,5,Done,2026-07-30,2026-08-11,0,0
+ONB-0008,F-ONB-03,ONB,S01,Story,Harden eKYC document capture,3,Not Done,2026-07-29,,0,1
+ONB-0009,F-ONB-04,ONB,S01,Story,Implement consent capture,5,Done,2026-07-22,2026-08-10,0,0
+ONB-0010,F-ONB-01,ONB,S01,Defect,Fix timeout under load in welcome pack trigger,3,Done,2026-08-11,2026-08-20,0,0
+ONB-0011,F-ONB-02,ONB,S01,Story,Build welcome pack trigger,8,Done,2026-08-18,2026-08-20,0,0
+ONB-0012,F-ONB-04,ONB,S02,Story,Harden duplicate applicant check,5,Done,2026-08-21,2026-08-30,0,0
+ONB-0013,F-ONB-03,ONB,S02,Story,Integrate welcome pack trigger,5,Done,2026-08-20,2026-08-30,2,0
+ONB-0014,F-ONB-02,ONB,S02,Story,Integrate onboarding case dashboard,3,Done,2026-08-08,2026-08-26,0,0
+ONB-0015,F-ONB-04,ONB,S02,Story,Expose address lookup integration,8,Done,2026-08-18,2026-08-30,0,0
+ONB-0016,F-ONB-04,ONB,S02,Story,Add eKYC document capture,5,Done,2026-08-08,2026-09-03,0,0
+ONB-0017,F-ONB-03,ONB,S02,Story,Add consent capture,8,Not Done,2026-08-19,,0,1
+ONB-0018,F-ONB-02,ONB,S02,Story,Automate account opening journey,1,Not Done,2026-08-13,,1,1
+ONB-0019,F-ONB-04,ONB,S02,Defect,Fix crash on resume in account opening journey,3,Done,2026-09-01,2026-09-02,0,0
+ONB-0020,F-ONB-03,ONB,S02,Defect,Fix UI overlap on small screens in account opening journey,2,Not Done,2026-08-26,,0,1
+ONB-0021,F-ONB-03,ONB,S02,Story,Build onboarding case dashboard,3,Done,2026-09-01,2026-09-02,0,0
+ONB-0022,F-ONB-02,ONB,S02,Story,Implement eKYC document capture,3,Done,2026-08-27,2026-08-30,0,0
+ONB-0023,F-ONB-02,ONB,S03,Story,Refactor duplicate applicant check,5,Not Done,2026-08-31,,0,1
+ONB-0024,F-ONB-03,ONB,S03,Story,Add ID&V fallback flow,2,Done,2026-08-30,2026-09-09,3,0
+ONB-0025,F-ONB-01,ONB,S03,Story,Add consent capture,3,Not Done,2026-08-23,,0,1
+ONB-0026,F-ONB-01,ONB,S03,Spike,Spike: options for account opening journey,5,Not Done,2026-08-22,,0,1
+ONB-0027,F-ONB-01,ONB,S03,Story,Integrate eKYC document capture,3,Done,2026-09-03,2026-09-11,0,0
+ONB-0028,F-ONB-03,ONB,S03,Story,Expose applicant risk scoring,3,Done,2026-08-27,2026-09-09,0,0
+ONB-0029,F-ONB-01,ONB,S03,Story,Expose applicant risk scoring,5,Done,2026-08-18,2026-09-19,1,0
+ONB-0030,F-ONB-02,ONB,S03,Spike,Spike: options for applicant risk scoring,3,Done,2026-09-01,2026-09-08,0,0
+ONB-0031,F-ONB-03,ONB,S03,Story,Expose consent capture,1,Done,2026-08-28,2026-09-12,0,0
+ONB-0032,F-ONB-02,ONB,S03,Story,Automate duplicate applicant check,2,Not Done,2026-08-25,,0,1
+ONB-0033,F-ONB-02,ONB,S03,Story,Build applicant risk scoring,1,Not Done,2026-08-23,,0,1
+ONB-0034,F-ONB-04,ONB,S03,Story,Add onboarding case dashboard,5,Done,2026-09-02,2026-09-18,0,0
+ONB-0035,F-ONB-04,ONB,S03,Defect,Fix wrong error message in eKYC document capture,3,Done,2026-09-08,2026-09-09,1,0
+ONB-0036,F-ONB-04,ONB,S03,Defect,Fix wrong error message in sanctions screening call,2,Done,2026-09-13,2026-09-20,0,0
+ONB-0037,F-ONB-04,ONB,S03,Story,Harden sanctions screening call,3,Not Done,2026-09-10,,0,1
+ONB-0038,F-ONB-03,ONB,S03,Story,Integrate eKYC document capture,5,Done,2026-09-11,2026-09-15,0,0
+ONB-0039,F-ONB-03,ONB,S04,Story,Build account opening journey,3,Done,2026-09-04,2026-09-23,0,0
+ONB-0040,F-ONB-03,ONB,S04,Story,Expose eKYC document capture,3,Done,2026-09-20,2026-09-27,0,0
+ONB-0041,F-ONB-04,ONB,S04,Story,Integrate duplicate applicant check,5,Done,2026-09-02,2026-09-22,0,0
+ONB-0042,F-ONB-02,ONB,S04,Story,Expose address lookup integration,2,Not Done,2026-09-13,,0,1
+ONB-0043,F-ONB-04,ONB,S04,Story,Add address lookup integration,3,Done,2026-09-12,2026-09-29,3,0
+ONB-0044,F-ONB-04,ONB,S04,Story,Implement duplicate applicant check,3,Not Done,2026-09-18,,0,1
+ONB-0045,F-ONB-03,ONB,S04,Story,Integrate sanctions screening call,2,Done,2026-09-17,2026-09-22,0,0
+ONB-0046,F-ONB-02,ONB,S04,Story,Refactor welcome pack trigger,3,Done,2026-09-12,2026-10-01,0,0
+ONB-0047,F-ONB-01,ONB,S04,Story,Refactor onboarding case dashboard,2,Done,2026-09-20,2026-09-30,0,0
+ONB-0048,F-ONB-01,ONB,S04,Story,Expose ID&V fallback flow,2,Done,2026-09-01,2026-10-01,0,0
+ONB-0049,F-ONB-02,ONB,S04,Story,Harden welcome pack trigger,2,Not Done,2026-09-19,,0,1
+ONB-0050,F-ONB-02,ONB,S04,Story,Expose eKYC document capture,5,Not Done,2026-09-04,,0,1
+ONB-0051,F-ONB-02,ONB,S04,Story,Build welcome pack trigger,8,Not Done,2026-09-16,,0,1
+ONB-0052,F-ONB-04,ONB,S04,Defect,Fix missing validation in welcome pack trigger,1,Not Done,2026-09-27,,0,1
+ONB-0053,F-ONB-03,ONB,S04,Defect,Fix crash on resume in account opening journey,1,Done,2026-09-27,2026-10-01,0,0
+ONB-0054,F-ONB-04,ONB,S04,Story,Automate account opening journey,8,Done,2026-09-25,2026-10-04,0,0
+ONB-0055,F-ONB-04,ONB,S04,Story,Add applicant risk scoring,3,Done,2026-09-23,2026-10-02,0,0
+ONB-0056,F-ONB-04,ONB,S05,Story,Harden ID&V fallback flow,2,Not Done,2026-09-25,,0,1
+ONB-0057,F-ONB-03,ONB,S05,Story,Harden sanctions screening call,2,Done,2026-09-19,2026-10-06,0,0
+ONB-0058,F-ONB-04,ONB,S05,Story,Implement applicant risk scoring,2,Not Done,2026-09-20,,1,1
+ONB-0059,F-ONB-03,ONB,S05,Story,Add ID&V fallback flow,2,Done,2026-09-19,2026-10-05,0,0
+ONB-0060,F-ONB-04,ONB,S05,Story,Integrate onboarding case dashboard,5,Not Done,2026-09-29,,3,1
+ONB-0061,F-ONB-04,ONB,S05,Story,Harden consent capture,5,Not Done,2026-09-28,,0,1
+ONB-0062,F-ONB-04,ONB,S05,Story,Add applicant risk scoring,5,Done,2026-09-15,2026-10-07,0,0
+ONB-0063,F-ONB-02,ONB,S05,Spike,Spike: options for welcome pack trigger,2,Done,2026-09-19,2026-10-10,0,0
+ONB-0064,F-ONB-02,ONB,S05,Story,Add account opening journey,3,Done,2026-09-25,2026-10-14,3,0
+ONB-0065,F-ONB-04,ONB,S05,Story,Implement sanctions screening call,5,Done,2026-09-24,2026-10-18,0,0
+ONB-0066,F-ONB-03,ONB,S05,Story,Automate consent capture,5,Done,2026-09-27,2026-10-07,0,0
+ONB-0067,F-ONB-02,ONB,S05,Defect,Fix wrong error message in consent capture,2,Done,2026-10-07,2026-10-18,1,0
+ONB-0068,F-ONB-02,ONB,S05,Defect,Fix UI overlap on small screens in applicant risk scoring,1,Done,2026-10-09,2026-10-18,0,0
+ONB-0069,F-ONB-02,ONB,S05,Story,Automate welcome pack trigger,1,Done,2026-10-10,2026-10-17,0,0
+ONB-0070,F-ONB-04,ONB,S05,Story,Automate consent capture,5,Not Done,2026-10-13,,0,1
+ONB-0071,F-ONB-04,ONB,S05,Story,Harden applicant risk scoring,1,Not Done,2026-10-08,,0,1
+ONB-0072,F-ONB-03,ONB,S05,Story,Refactor eKYC document capture,3,Done,2026-10-07,2026-10-14,3,0
+ONB-0073,F-ONB-03,ONB,S05,Story,Expose duplicate applicant check,1,Done,2026-10-07,2026-10-09,0,0
+ONB-0074,F-ONB-06,ONB,S06,Story,Automate ID&V fallback flow,5,Not Done,2026-10-10,,0,1
+ONB-0075,F-ONB-06,ONB,S06,Story,Implement onboarding case dashboard,3,Done,2026-10-07,2026-10-29,0,0
+ONB-0076,F-ONB-05,ONB,S06,Story,Automate eKYC document capture,5,Done,2026-10-14,2026-10-29,0,0
+ONB-0077,F-ONB-06,ONB,S06,Story,Automate address lookup integration,2,Done,2026-10-06,2026-10-31,0,0
+ONB-0078,F-ONB-05,ONB,S06,Story,Integrate duplicate applicant check,3,Not Done,2026-10-06,,2,1
+ONB-0079,F-ONB-07,ONB,S06,Story,Expose consent capture,8,Not Done,2026-09-29,,2,1
+ONB-0080,F-ONB-05,ONB,S06,Story,Add consent capture,3,Done,2026-10-13,2026-10-31,0,0
+ONB-0081,F-ONB-06,ONB,S06,Story,Expose consent capture,2,Done,2026-10-09,2026-10-19,0,0
+ONB-0082,F-ONB-06,ONB,S06,Story,Implement ID&V fallback flow,2,Done,2026-10-14,2026-10-29,0,0
+ONB-0083,F-ONB-07,ONB,S06,Story,Automate account opening journey,2,Done,2026-10-13,2026-10-24,0,0
+ONB-0084,F-ONB-07,ONB,S06,Story,Integrate duplicate applicant check,5,Done,2026-10-03,2026-10-27,0,0
+ONB-0085,F-ONB-05,ONB,S06,Story,Integrate consent capture,3,Removed,2026-10-04,,0,0
+ONB-0086,F-ONB-05,ONB,S06,Defect,Fix crash on resume in welcome pack trigger,1,Done,2026-10-22,2026-10-26,0,0
+ONB-0087,F-ONB-06,ONB,S06,Defect,Fix missing validation in account opening journey,3,Done,2026-10-24,2026-10-26,0,0
+ONB-0088,F-ONB-06,ONB,S06,Story,Refactor sanctions screening call,5,Done,2026-10-21,2026-10-22,0,0
+ONB-0089,F-ONB-07,ONB,S06,Story,Implement consent capture,8,Not Done,2026-10-24,,0,1
+ONB-0090,F-ONB-05,ONB,S07,Story,Refactor applicant risk scoring,3,Done,2026-10-18,2026-11-07,0,0
+ONB-0091,F-ONB-05,ONB,S07,Story,Expose address lookup integration,3,Done,2026-10-30,2026-11-15,0,0
+ONB-0092,F-ONB-07,ONB,S07,Story,Expose sanctions screening call,2,Not Done,2026-10-29,,0,1
+ONB-0093,F-ONB-07,ONB,S07,Story,Add account opening journey,2,Done,2026-10-22,2026-11-14,0,0
+ONB-0094,F-ONB-05,ONB,S07,Story,Add sanctions screening call,3,Not Done,2026-10-30,,0,1
+ONB-0095,F-ONB-05,ONB,S07,Story,Build ID&V fallback flow,2,Done,2026-10-31,2026-11-10,0,0
+ONB-0096,F-ONB-07,ONB,S07,Story,Automate applicant risk scoring,2,Done,2026-10-24,2026-11-05,0,0
+ONB-0097,F-ONB-07,ONB,S07,Story,Expose duplicate applicant check,5,Not Done,2026-10-26,,0,1
+ONB-0098,F-ONB-05,ONB,S07,Story,Implement onboarding case dashboard,3,Done,2026-10-25,2026-11-12,0,0
+ONB-0099,F-ONB-06,ONB,S07,Story,Refactor sanctions screening call,3,Done,2026-10-24,2026-11-08,0,0
+ONB-0100,F-ONB-07,ONB,S07,Story,Refactor consent capture,5,Not Done,2026-10-19,,0,1
+ONB-0101,F-ONB-07,ONB,S07,Story,Add ID&V fallback flow,3,Done,2026-10-27,2026-11-03,0,0
+ONB-0102,F-ONB-05,ONB,S07,Story,Build welcome pack trigger,3,Removed,2026-11-01,,0,0
+ONB-0103,F-ONB-07,ONB,S07,Story,Expose sanctions screening call,2,Removed,2026-10-13,,0,0
+ONB-0104,F-ONB-06,ONB,S07,Story,Harden applicant risk scoring,5,Not Done,2026-11-04,,0,1
+ONB-0105,F-ONB-05,ONB,S07,Story,Build onboarding case dashboard,8,Done,2026-11-08,2026-11-14,0,0
+ONB-0106,F-ONB-05,ONB,S07,Story,Refactor account opening journey,3,Not Done,2026-11-05,,0,1
+ONB-0107,F-ONB-05,ONB,S08,Story,Harden sanctions screening call,2,Done,2026-11-03,2026-11-17,0,0
+ONB-0108,F-ONB-06,ONB,S08,Story,Build welcome pack trigger,3,In Progress,2026-11-13,,0,0
+ONB-0109,F-ONB-06,ONB,S08,Story,Integrate duplicate applicant check,2,Done,2026-11-03,2026-11-16,0,0
+ONB-0110,F-ONB-06,ONB,S08,Story,Expose duplicate applicant check,3,Done,2026-11-02,2026-11-16,0,0
+ONB-0111,F-ONB-07,ONB,S08,Story,Expose welcome pack trigger,2,Done,2026-11-01,2026-11-18,0,0
+ONB-0112,F-ONB-06,ONB,S08,Story,Add address lookup integration,5,In Progress,2026-10-29,,0,0
+ONB-0113,F-ONB-05,ONB,S08,Story,Build consent capture,3,To Do,2026-11-08,,0,0
+ONB-0114,F-ONB-07,ONB,S08,Spike,Spike: options for applicant risk scoring,2,In Progress,2026-11-02,,0,0
+ONB-0115,F-ONB-07,ONB,S08,Story,Implement duplicate applicant check,1,To Do,2026-11-03,,0,0
+ONB-0116,F-ONB-05,ONB,S08,Story,Automate sanctions screening call,2,In Progress,2026-11-15,,3,0
+ONB-0117,F-ONB-06,ONB,S08,Story,Implement applicant risk scoring,2,Done,2026-11-15,2026-11-16,0,0
+ONB-0118,F-ONB-05,ONB,S08,Story,Harden applicant risk scoring,5,In Progress,2026-11-15,,0,0
+ONB-0119,F-ONB-07,ONB,S08,Story,Implement address lookup integration,3,To Do,2026-10-31,,2,0
+ONB-0120,F-ONB-07,ONB,S08,Story,Automate onboarding case dashboard,5,Removed,2026-10-29,,0,0
+ONB-0121,F-ONB-05,ONB,S08,Story,Harden onboarding case dashboard,8,Done,2026-11-18,2026-11-19,0,0
+ONB-0122,F-ONB-06,ONB,S08,Story,Refactor account opening journey,3,In Progress,2026-11-21,,0,0
+ONB-0123,F-ONB-06,ONB,S08,Story,Harden account opening journey,3,In Progress,2026-11-25,,2,0
+ONB-0124,F-ONB-07,ONB,S08,Story,Integrate eKYC document capture,2,To Do,2026-11-22,,0,0
+ONB-0125,F-ONB-05,ONB,S08,Story,Add welcome pack trigger,5,To Do,2026-11-18,,0,0
+ONB-0126,F-ONB-05,ONB,S09,Story,Harden account opening journey,2,To Do,2026-11-03,,0,0
+ONB-0127,F-ONB-07,ONB,S09,Story,Implement onboarding case dashboard,3,To Do,2026-11-16,,0,0
+ONB-0128,F-ONB-07,ONB,S09,Story,Harden address lookup integration,2,To Do,2026-11-04,,0,0
+ONB-0129,F-ONB-05,ONB,S09,Story,Harden account opening journey,3,To Do,2026-10-28,,0,0
+ONB-0130,F-ONB-07,ONB,S09,Story,Harden welcome pack trigger,1,To Do,2026-11-06,,0,0
+ONB-0131,F-ONB-08,ONB,S09,Story,Implement address lookup integration,2,To Do,2026-11-04,,0,0
+ONB-0132,F-ONB-05,ONB,S10,Story,Implement duplicate applicant check,1,To Do,2026-10-21,,0,0
+ONB-0133,F-ONB-05,ONB,S10,Story,Integrate onboarding case dashboard,1,To Do,2026-11-06,,0,0
+ONB-0134,F-ONB-06,ONB,S10,Story,Implement applicant risk scoring,2,To Do,2026-10-24,,0,0
+ONB-0135,F-ONB-08,ONB,S10,Story,Integrate sanctions screening call,5,To Do,2026-10-21,,0,0
+ONB-0136,F-ONB-05,ONB,S10,Story,Implement sanctions screening call,5,To Do,2026-11-15,,0,0
+ONB-0137,F-ONB-05,ONB,S10,Story,Expose applicant risk scoring,8,To Do,2026-11-17,,0,0
+PAY-0001,F-PAY-02,PAY,S01,Story,Implement ISO 20022 message mapper,2,Done,2026-08-03,2026-08-11,0,0
+PAY-0002,F-PAY-03,PAY,S01,Story,Add payment status webhooks,3,Done,2026-07-23,2026-08-23,0,0
+PAY-0003,F-PAY-03,PAY,S01,Story,Integrate refund workflow,5,Done,2026-08-02,2026-08-14,0,0
+PAY-0004,F-PAY-03,PAY,S01,Story,Expose standing order API,5,Done,2026-07-30,2026-08-19,0,0
+PAY-0005,F-PAY-03,PAY,S01,Story,Harden ledger reconciliation job,3,Done,2026-07-31,2026-08-15,0,0
+PAY-0006,F-PAY-03,PAY,S01,Story,Refactor faster payments retry logic,3,Not Done,2026-07-26,,0,1
+PAY-0007,F-PAY-04,PAY,S01,Story,Implement refund workflow,2,Not Done,2026-07-29,,0,1
+PAY-0008,F-PAY-01,PAY,S01,Story,Add confirmation of payee check,1,Done,2026-08-07,2026-08-21,0,0
+PAY-0009,F-PAY-02,PAY,S01,Story,Automate payment status webhooks,2,Done,2026-08-07,2026-08-19,0,0
+PAY-0010,F-PAY-02,PAY,S01,Story,Harden confirmation of payee check,3,Done,2026-08-06,2026-08-19,0,0
+PAY-0011,F-PAY-01,PAY,S01,Story,Automate ledger reconciliation job,8,Done,2026-08-05,2026-08-14,0,0
+PAY-0012,F-PAY-02,PAY,S01,Story,Refactor payment limits service,3,Done,2026-08-03,2026-08-16,0,0
+PAY-0013,F-PAY-04,PAY,S01,Story,Expose scheduled payments UI API,2,Done,2026-08-14,2026-08-20,0,0
+PAY-0014,F-PAY-01,PAY,S01,Story,Implement fraud score hook,3,Done,2026-08-12,2026-08-16,0,0
+PAY-0015,F-PAY-04,PAY,S02,Story,Implement faster payments retry logic,5,Done,2026-08-22,2026-09-01,0,0
+PAY-0016,F-PAY-04,PAY,S02,Story,Build payment status webhooks,8,Done,2026-08-16,2026-08-26,0,0
+PAY-0017,F-PAY-04,PAY,S02,Spike,Spike: options for fraud score hook,3,Done,2026-08-22,2026-09-02,0,0
+PAY-0018,F-PAY-01,PAY,S02,Story,Build refund workflow,5,Done,2026-08-05,2026-08-26,0,0
+PAY-0019,F-PAY-04,PAY,S02,Story,Refactor refund workflow,5,Done,2026-08-16,2026-08-25,0,0
+PAY-0020,F-PAY-02,PAY,S02,Story,Build ISO 20022 message mapper,2,Not Done,2026-08-10,,0,1
+PAY-0021,F-PAY-02,PAY,S02,Story,Add scheduled payments UI API,3,Not Done,2026-08-14,,0,1
+PAY-0022,F-PAY-03,PAY,S02,Story,Automate refund workflow,2,Done,2026-08-13,2026-08-27,0,0
+PAY-0023,F-PAY-04,PAY,S02,Story,Build faster payments retry logic,3,Done,2026-08-15,2026-08-29,0,0
+PAY-0024,F-PAY-02,PAY,S02,Story,Refactor refund workflow,3,Done,2026-08-08,2026-08-25,0,0
+PAY-0025,F-PAY-01,PAY,S02,Story,Harden payment limits service,5,Not Done,2026-08-23,,1,1
+PAY-0026,F-PAY-02,PAY,S02,Story,Build fraud score hook,8,Done,2026-08-28,2026-08-29,0,0
+PAY-0027,F-PAY-02,PAY,S03,Story,Expose payment limits service,1,Done,2026-08-31,2026-09-12,0,0
+PAY-0028,F-PAY-01,PAY,S03,Story,Implement refund workflow,3,Done,2026-09-02,2026-09-16,2,0
+PAY-0029,F-PAY-04,PAY,S03,Story,Expose confirmation of payee check,5,Done,2026-08-20,2026-09-20,0,0
+PAY-0030,F-PAY-02,PAY,S03,Story,Harden ISO 20022 message mapper,2,Done,2026-09-04,2026-09-20,1,0
+PAY-0031,F-PAY-04,PAY,S03,Story,Harden ledger reconciliation job,5,Done,2026-08-30,2026-09-12,0,0
+PAY-0032,F-PAY-03,PAY,S03,Story,Refactor faster payments retry logic,3,Done,2026-08-22,2026-09-13,0,0
+PAY-0033,F-PAY-04,PAY,S03,Spike,Spike: options for scheduled payments UI API,1,Done,2026-08-30,2026-09-14,0,0
+PAY-0034,F-PAY-03,PAY,S03,Story,Automate ISO 20022 message mapper,3,Done,2026-08-19,2026-09-19,0,0
+PAY-0035,F-PAY-01,PAY,S03,Story,Automate ledger reconciliation job,2,Done,2026-09-01,2026-09-13,0,0
+PAY-0036,F-PAY-02,PAY,S03,Story,Build faster payments retry logic,3,Not Done,2026-09-02,,1,1
+PAY-0037,F-PAY-02,PAY,S03,Story,Expose ISO 20022 message mapper,2,Done,2026-08-27,2026-09-18,0,0
+PAY-0038,F-PAY-04,PAY,S03,Story,Harden ISO 20022 message mapper,3,Done,2026-08-18,2026-09-19,0,0
+PAY-0039,F-PAY-04,PAY,S03,Story,Expose payment limits service,2,Done,2026-09-03,2026-09-20,0,0
+PAY-0040,F-PAY-03,PAY,S03,Story,Add standing order API,3,Done,2026-08-23,2026-09-08,0,0
+PAY-0041,F-PAY-01,PAY,S03,Story,Integrate fraud score hook,3,Done,2026-09-05,2026-09-17,0,0
+PAY-0042,F-PAY-03,PAY,S03,Story,Harden faster payments retry logic,3,Done,2026-09-01,2026-09-13,0,0
+PAY-0043,F-PAY-02,PAY,S03,Story,Add ledger reconciliation job,3,Done,2026-09-16,2026-09-18,0,0
+PAY-0044,F-PAY-02,PAY,S04,Story,Implement fraud score hook,5,Done,2026-09-03,2026-10-03,0,0
+PAY-0045,F-PAY-04,PAY,S04,Spike,Spike: options for payment limits service,3,Done,2026-09-17,2026-09-25,0,0
+PAY-0046,F-PAY-02,PAY,S04,Story,Integrate faster payments retry logic,5,Done,2026-09-09,2026-09-22,0,0
+PAY-0047,F-PAY-01,PAY,S04,Spike,Spike: options for standing order API,2,Done,2026-09-08,2026-10-04,0,0
+PAY-0048,F-PAY-03,PAY,S04,Story,Integrate ISO 20022 message mapper,5,Done,2026-09-19,2026-10-03,0,0
+PAY-0049,F-PAY-03,PAY,S04,Story,Harden fraud score hook,5,Done,2026-09-13,2026-09-21,0,0
+PAY-0050,F-PAY-01,PAY,S04,Story,Implement payment status webhooks,2,Not Done,2026-09-15,,0,1
+PAY-0051,F-PAY-02,PAY,S04,Story,Refactor faster payments retry logic,3,Done,2026-09-20,2026-09-22,0,0
+PAY-0052,F-PAY-02,PAY,S04,Story,Integrate refund workflow,5,Done,2026-09-03,2026-09-27,0,0
+PAY-0053,F-PAY-03,PAY,S04,Story,Integrate refund workflow,5,Done,2026-09-14,2026-09-21,0,0
+PAY-0054,F-PAY-01,PAY,S05,Story,Expose fraud score hook,2,Done,2026-09-23,2026-10-10,1,0
+PAY-0055,F-PAY-04,PAY,S05,Story,Implement ISO 20022 message mapper,8,Done,2026-09-22,2026-10-07,0,0
+PAY-0056,F-PAY-02,PAY,S05,Story,Refactor payment limits service,3,Done,2026-09-22,2026-10-06,0,0
+PAY-0057,F-PAY-02,PAY,S05,Story,Refactor faster payments retry logic,2,Done,2026-09-18,2026-10-06,0,0
+PAY-0058,F-PAY-01,PAY,S05,Story,Implement refund workflow,1,Done,2026-09-15,2026-10-08,3,0
+PAY-0059,F-PAY-03,PAY,S05,Story,Implement payment status webhooks,3,Done,2026-09-27,2026-10-05,0,0
+PAY-0060,F-PAY-02,PAY,S05,Story,Integrate payment status webhooks,2,Done,2026-09-25,2026-10-06,0,0
+PAY-0061,F-PAY-04,PAY,S05,Story,Expose scheduled payments UI API,3,Done,2026-10-02,2026-10-13,0,0
+PAY-0062,F-PAY-05,PAY,S05,Story,Harden faster payments retry logic,3,Not Done,2026-09-18,,0,1
+PAY-0063,F-PAY-02,PAY,S05,Story,Expose ledger reconciliation job,3,Done,2026-09-26,2026-10-07,0,0
+PAY-0064,F-PAY-04,PAY,S05,Story,Add fraud score hook,5,Done,2026-09-17,2026-10-05,0,0
+PAY-0065,F-PAY-03,PAY,S05,Story,Implement refund workflow,8,Done,2026-09-17,2026-10-13,0,0
+PAY-0066,F-PAY-01,PAY,S05,Defect,Fix timeout under load in faster payments retry logic,3,Done,2026-10-11,2026-10-13,0,0
+PAY-0067,F-PAY-05,PAY,S06,Spike,Spike: options for fraud score hook,8,Done,2026-09-29,2026-10-26,0,0
+PAY-0068,F-PAY-05,PAY,S06,Story,Build standing order API,2,Done,2026-10-17,2026-10-25,0,0
+PAY-0069,F-PAY-07,PAY,S06,Story,Automate scheduled payments UI API,3,Done,2026-10-08,2026-10-21,0,0
+PAY-0070,F-PAY-05,PAY,S06,Story,Integrate ISO 20022 message mapper,2,Done,2026-10-16,2026-10-20,0,0
+PAY-0071,F-PAY-05,PAY,S06,Story,Implement fraud score hook,3,Done,2026-10-02,2026-10-23,2,0
+PAY-0072,F-PAY-06,PAY,S06,Story,Implement standing order API,2,Done,2026-10-02,2026-10-22,0,0
+PAY-0073,F-PAY-07,PAY,S06,Story,Automate scheduled payments UI API,3,Done,2026-10-10,2026-10-21,0,0
+PAY-0074,F-PAY-07,PAY,S06,Story,Harden ISO 20022 message mapper,2,Done,2026-10-08,2026-10-29,0,0
+PAY-0075,F-PAY-06,PAY,S06,Story,Harden scheduled payments UI API,3,Done,2026-10-09,2026-10-21,0,0
+PAY-0076,F-PAY-07,PAY,S06,Story,Integrate refund workflow,2,Done,2026-10-05,2026-10-30,0,0
+PAY-0077,F-PAY-06,PAY,S06,Story,Refactor confirmation of payee check,8,Done,2026-10-07,2026-10-27,0,0
+PAY-0078,F-PAY-07,PAY,S06,Story,Expose payment status webhooks,5,Done,2026-10-16,2026-10-27,0,0
+PAY-0079,F-PAY-06,PAY,S06,Defect,Fix stale cache after logout in faster payments retry logic,1,Done,2026-10-27,2026-10-30,0,0
+PAY-0080,F-PAY-07,PAY,S07,Story,Expose scheduled payments UI API,2,Done,2026-10-23,2026-11-06,0,0
+PAY-0081,F-PAY-07,PAY,S07,Story,Build refund workflow,5,Done,2026-10-30,2026-11-02,2,0
+PAY-0082,F-PAY-06,PAY,S07,Story,Automate confirmation of payee check,3,Done,2026-10-18,2026-11-11,0,0
+PAY-0083,F-PAY-07,PAY,S07,Story,Harden payment status webhooks,5,Done,2026-10-23,2026-11-11,0,0
+PAY-0084,F-PAY-06,PAY,S07,Story,Harden scheduled payments UI API,1,Done,2026-10-31,2026-11-07,0,0
+PAY-0085,F-PAY-05,PAY,S07,Story,Expose refund workflow,5,Done,2026-10-27,2026-11-02,0,0
+PAY-0086,F-PAY-05,PAY,S07,Story,Refactor faster payments retry logic,2,Done,2026-10-14,2026-11-03,0,0
+PAY-0087,F-PAY-07,PAY,S07,Story,Expose confirmation of payee check,5,Done,2026-10-25,2026-11-08,0,0
+PAY-0088,F-PAY-05,PAY,S07,Story,Implement scheduled payments UI API,3,Done,2026-10-27,2026-11-02,0,0
+PAY-0089,F-PAY-05,PAY,S07,Story,Build payment status webhooks,5,Done,2026-10-22,2026-11-06,0,0
+PAY-0090,F-PAY-07,PAY,S07,Story,Automate refund workflow,5,Done,2026-10-19,2026-11-05,0,0
+PAY-0091,F-PAY-06,PAY,S08,Story,Refactor scheduled payments UI API,3,To Do,2026-11-03,,3,0
+PAY-0092,F-PAY-06,PAY,S08,Story,Build fraud score hook,5,In Progress,2026-11-02,,0,0
+PAY-0093,F-PAY-06,PAY,S08,Story,Build payment status webhooks,5,To Do,2026-11-15,,0,0
+PAY-0094,F-PAY-07,PAY,S08,Story,Implement faster payments retry logic,2,In Progress,2026-11-12,,3,0
+PAY-0095,F-PAY-05,PAY,S08,Spike,Spike: options for confirmation of payee check,5,In Progress,2026-11-12,,0,0
+PAY-0096,F-PAY-06,PAY,S08,Story,Implement payment limits service,2,To Do,2026-11-05,,0,0
+PAY-0097,F-PAY-07,PAY,S08,Story,Build faster payments retry logic,3,Done,2026-10-29,2026-11-16,0,0
+PAY-0098,F-PAY-07,PAY,S08,Story,Refactor standing order API,5,In Progress,2026-11-07,,0,0
+PAY-0099,F-PAY-05,PAY,S08,Story,Add ledger reconciliation job,8,Done,2026-11-15,2026-11-18,0,0
+PAY-0100,F-PAY-05,PAY,S08,Story,Automate payment limits service,2,To Do,2026-11-20,,0,0
+PAY-0101,F-PAY-05,PAY,S09,Story,Refactor confirmation of payee check,3,To Do,2026-10-22,,0,0
+PAY-0102,F-PAY-05,PAY,S09,Story,Implement payment limits service,2,To Do,2026-11-02,,0,0
+PAY-0103,F-PAY-07,PAY,S09,Story,Automate scheduled payments UI API,3,To Do,2026-11-10,,0,0
+PAY-0104,F-PAY-08,PAY,S09,Story,Integrate standing order API,3,To Do,2026-11-08,,0,0
+PAY-0105,F-PAY-07,PAY,S09,Story,Harden scheduled payments UI API,2,To Do,2026-10-26,,0,0
+PAY-0106,F-PAY-08,PAY,S09,Story,Refactor refund workflow,3,To Do,2026-10-25,,0,0
+PAY-0107,F-PAY-07,PAY,S09,Story,Implement ISO 20022 message mapper,1,To Do,2026-11-02,,0,0
+PAY-0108,F-PAY-07,PAY,S09,Story,Refactor payment status webhooks,2,To Do,2026-11-15,,0,0
+PAY-0109,F-PAY-05,PAY,S10,Story,Expose refund workflow,2,To Do,2026-11-05,,0,0
+PAY-0110,F-PAY-05,PAY,S10,Story,Add standing order API,2,To Do,2026-10-28,,0,0
+PAY-0111,F-PAY-06,PAY,S10,Story,Automate confirmation of payee check,3,To Do,2026-11-07,,0,0
+PAY-0112,F-PAY-08,PAY,S10,Story,Integrate scheduled payments UI API,3,To Do,2026-11-12,,0,0
+PAY-0113,F-PAY-07,PAY,S10,Story,Refactor payment limits service,2,To Do,2026-11-04,,0,0
+PAY-0114,F-PAY-07,PAY,S10,Story,Harden fraud score hook,3,To Do,2026-11-12,,0,0
+PAY-0115,F-PAY-08,PAY,S10,Story,Implement confirmation of payee check,5,To Do,2026-10-26,,0,0

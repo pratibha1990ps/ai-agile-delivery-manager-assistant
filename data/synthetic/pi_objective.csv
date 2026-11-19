@@ -1,0 +1,51 @@
+objective_id,pi_id,squad_id,description,committed,planned_bv,actual_bv
+OBJ-PI1-PAY-1,PI-1,PAY,Deliver Instant payments core,Yes,9,9
+OBJ-PI1-PAY-2,PI-1,PAY,Deliver Payee confirmation,Yes,4,4
+OBJ-PI1-PAY-3,PI-1,PAY,Deliver Refunds & reversals,Yes,9,8
+OBJ-PI1-PAY-4,PI-1,PAY,Deliver Payment limits,Yes,7,7
+OBJ-PI1-PAY-5,PI-1,PAY,Stretch: early adoption metrics for Instant payments core,No,6,6
+OBJ-PI1-ONB-1,PI-1,ONB,Deliver eKYC integration,Yes,7,6
+OBJ-PI1-ONB-2,PI-1,ONB,Deliver Digital ID&V,Yes,7,6
+OBJ-PI1-ONB-3,PI-1,ONB,Deliver Sanctions screening,Yes,7,6
+OBJ-PI1-ONB-4,PI-1,ONB,Deliver Applicant risk scoring,Yes,5,4
+OBJ-PI1-ONB-5,PI-1,ONB,Stretch: early adoption metrics for eKYC integration,No,8,7
+OBJ-PI1-DAT-1,PI-1,DAT,Deliver Data lake landing zone,Yes,4,2
+OBJ-PI1-DAT-2,PI-1,DAT,Deliver CDC from core banking,Yes,8,5
+OBJ-PI1-DAT-3,PI-1,DAT,Deliver Customer 360 model,Yes,10,6
+OBJ-PI1-DAT-4,PI-1,DAT,Deliver Data quality framework,Yes,10,6
+OBJ-PI1-DAT-5,PI-1,DAT,Stretch: early adoption metrics for Data lake landing zone,No,4,2
+OBJ-PI1-MOB-1,PI-1,MOB,Deliver Biometric login,Yes,6,4
+OBJ-PI1-MOB-2,PI-1,MOB,Deliver Card controls,Yes,9,7
+OBJ-PI1-MOB-3,PI-1,MOB,Deliver Transaction search,Yes,10,8
+OBJ-PI1-MOB-4,PI-1,MOB,Deliver Push notifications,Yes,7,5
+OBJ-PI1-MOB-5,PI-1,MOB,Stretch: early adoption metrics for Biometric login,No,9,7
+OBJ-PI1-IDS-1,PI-1,IDS,Deliver Colleague SSO,Yes,10,8
+OBJ-PI1-IDS-2,PI-1,IDS,Deliver MFA uplift,Yes,5,4
+OBJ-PI1-IDS-3,PI-1,IDS,Deliver Privileged access management,Yes,6,5
+OBJ-PI1-IDS-4,PI-1,IDS,Deliver Secrets management,Yes,5,4
+OBJ-PI1-IDS-5,PI-1,IDS,Stretch: early adoption metrics for Colleague SSO,No,7,6
+OBJ-PI2-PAY-1,PI-2,PAY,Deliver Scheduled payments,Yes,7,
+OBJ-PI2-PAY-2,PI-2,PAY,Deliver Payment notifications,Yes,10,
+OBJ-PI2-PAY-3,PI-2,PAY,Deliver ISO 20022 migration,Yes,8,
+OBJ-PI2-PAY-4,PI-2,PAY,Deliver Instant payments go-live readiness,Yes,8,
+OBJ-PI2-PAY-5,PI-2,PAY,Stretch: early adoption metrics for Scheduled payments,No,7,
+OBJ-PI2-ONB-1,PI-2,ONB,Deliver Digital account opening journey,Yes,9,
+OBJ-PI2-ONB-2,PI-2,ONB,Deliver Consent management,Yes,6,
+OBJ-PI2-ONB-3,PI-2,ONB,Deliver Fraud checks at onboarding,Yes,6,
+OBJ-PI2-ONB-4,PI-2,ONB,Deliver Onboarding operations dashboard,Yes,8,
+OBJ-PI2-ONB-5,PI-2,ONB,Stretch: early adoption metrics for Digital account opening journey,No,9,
+OBJ-PI2-DAT-1,PI-2,DAT,Deliver PII protection,Yes,7,
+OBJ-PI2-DAT-2,PI-2,DAT,Deliver Regulatory reporting extracts,Yes,9,
+OBJ-PI2-DAT-3,PI-2,DAT,Deliver Customer data lake go-live,Yes,4,
+OBJ-PI2-DAT-4,PI-2,DAT,Deliver Self-service analytics,Yes,4,
+OBJ-PI2-DAT-5,PI-2,DAT,Stretch: early adoption metrics for PII protection,No,4,
+OBJ-PI2-MOB-1,PI-2,MOB,Deliver Spending insights,Yes,4,
+OBJ-PI2-MOB-2,PI-2,MOB,Deliver Mobile app beta release,Yes,7,
+OBJ-PI2-MOB-3,PI-2,MOB,Deliver Accessibility uplift,Yes,8,
+OBJ-PI2-MOB-4,PI-2,MOB,Deliver In-app support,Yes,9,
+OBJ-PI2-MOB-5,PI-2,MOB,Stretch: early adoption metrics for Spending insights,No,4,
+OBJ-PI2-IDS-1,PI-2,IDS,Deliver Audit & monitoring,Yes,9,
+OBJ-PI2-IDS-2,PI-2,IDS,Deliver Certificate automation,Yes,4,
+OBJ-PI2-IDS-3,PI-2,IDS,Deliver Pen test remediation,Yes,10,
+OBJ-PI2-IDS-4,PI-2,IDS,Deliver Zero-trust pilot,Yes,6,
+OBJ-PI2-IDS-5,PI-2,IDS,Stretch: early adoption metrics for Audit & monitoring,No,9,

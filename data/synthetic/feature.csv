@@ -1,0 +1,41 @@
+feature_id,squad_id,pi_id,title,business_value_planned,business_value_actual,status,target_sprint_id
+F-PAY-01,PAY,PI-1,Instant payments core,9,9,Done,S03
+F-PAY-02,PAY,PI-1,Payee confirmation,5,4,Done,S04
+F-PAY-03,PAY,PI-1,Refunds & reversals,3,3,Done,S05
+F-PAY-04,PAY,PI-1,Payment limits,7,7,Done,S03
+F-PAY-05,PAY,PI-2,Scheduled payments,3,,In Progress,S09
+F-PAY-06,PAY,PI-2,Payment notifications,4,,In Progress,S10
+F-PAY-07,PAY,PI-2,ISO 20022 migration,10,,In Progress,S08
+F-PAY-08,PAY,PI-2,Instant payments go-live readiness,4,,Not Started,S09
+F-ONB-01,ONB,PI-1,eKYC integration,5,5,Done,S03
+F-ONB-02,ONB,PI-1,Digital ID&V,9,9,Done,S04
+F-ONB-03,ONB,PI-1,Sanctions screening,7,7,Done,S05
+F-ONB-04,ONB,PI-1,Applicant risk scoring,4,,In Progress,S03
+F-ONB-05,ONB,PI-2,Digital account opening journey,8,,In Progress,S09
+F-ONB-06,ONB,PI-2,Consent management,8,,In Progress,S10
+F-ONB-07,ONB,PI-2,Fraud checks at onboarding,8,,In Progress,S08
+F-ONB-08,ONB,PI-2,Onboarding operations dashboard,6,,Not Started,S09
+F-DAT-01,DAT,PI-1,Data lake landing zone,5,5,Done,S03
+F-DAT-02,DAT,PI-1,CDC from core banking,3,3,Done,S04
+F-DAT-03,DAT,PI-1,Customer 360 model,4,,In Progress,S05
+F-DAT-04,DAT,PI-1,Data quality framework,3,,In Progress,S03
+F-DAT-05,DAT,PI-2,PII protection,7,,In Progress,S09
+F-DAT-06,DAT,PI-2,Regulatory reporting extracts,4,,In Progress,S10
+F-DAT-07,DAT,PI-2,Customer data lake go-live,10,,In Progress,S08
+F-DAT-08,DAT,PI-2,Self-service analytics,6,,Not Started,S09
+F-MOB-01,MOB,PI-1,Biometric login,7,6,Done,S03
+F-MOB-02,MOB,PI-1,Card controls,3,3,Done,S04
+F-MOB-03,MOB,PI-1,Transaction search,3,2,Done,S05
+F-MOB-04,MOB,PI-1,Push notifications,3,,In Progress,S03
+F-MOB-05,MOB,PI-2,Spending insights,10,,In Progress,S09
+F-MOB-06,MOB,PI-2,Mobile app beta release,10,,In Progress,S10
+F-MOB-07,MOB,PI-2,Accessibility uplift,8,,In Progress,S08
+F-MOB-08,MOB,PI-2,In-app support,6,,Not Started,S09
+F-IDS-01,IDS,PI-1,Colleague SSO,7,7,Done,S03
+F-IDS-02,IDS,PI-1,MFA uplift,5,4,Done,S04
+F-IDS-03,IDS,PI-1,Privileged access management,4,3,Done,S05
+F-IDS-04,IDS,PI-1,Secrets management,4,,In Progress,S03
+F-IDS-05,IDS,PI-2,Audit & monitoring,10,,In Progress,S09
+F-IDS-06,IDS,PI-2,Certificate automation,7,,In Progress,S10
+F-IDS-07,IDS,PI-2,Pen test remediation,9,,In Progress,S08
+F-IDS-08,IDS,PI-2,Zero-trust pilot,9,,Not Started,S09

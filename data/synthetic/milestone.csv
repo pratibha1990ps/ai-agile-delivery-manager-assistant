@@ -1,0 +1,13 @@
+milestone_id,programme_id,squad_id,name,baseline_date,forecast_date,actual_date,status,owner
+MS-01,MER,,Programme mobilised,2026-08-14,2026-08-14,2026-08-14,Complete,Priya Nair
+MS-02,MER,PAY,Payments API v1 live,2026-09-18,2026-09-18,2026-09-18,Complete,Ben Hartley
+MS-03,MER,ONB,eKYC vendor integrated,2026-09-25,2026-10-02,2026-10-02,Complete,Fatima Malik
+MS-04,MER,DAT,Data lake landing zone ready,2026-09-30,2026-10-09,2026-10-09,Complete,Chen Wei
+MS-05,MER,,PI 1 system demo,2026-10-16,2026-10-16,2026-10-16,Complete,Priya Nair
+MS-06,MER,MOB,Mobile app beta release,2026-11-20,2026-11-27,,Planned,Jade Thompson
+MS-07,MER,DAT,Customer data lake go-live,2026-12-04,2026-12-24,,Planned,Chen Wei
+MS-08,MER,IDS,SSO live for colleague apps,2026-12-11,2026-12-11,,Planned,Kofi Asante
+MS-09,MER,ONB,Digital account opening live,2026-12-11,2026-12-18,,Planned,Fatima Malik
+MS-10,MER,PAY,Instant payments go-live,2026-12-18,2026-12-18,,Planned,Ben Hartley
+MS-11,MER,IDS,Penetration test sign-off,2026-12-04,2026-12-04,,Planned,Kofi Asante
+MS-12,MER,,PI 2 system demo,2026-12-24,2026-12-24,,Planned,Priya Nair

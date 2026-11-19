@@ -1,0 +1,6 @@
+squad_id,programme_id,name,domain,team_size,capacity_points_per_sprint
+PAY,MER,Payments,Payments & Transfers,8,40
+ONB,MER,Customer Onboarding,KYC & Account Opening,7,36
+DAT,MER,Data Platform,Data & Analytics,8,38
+MOB,MER,Mobile App,Digital Channels,9,44
+IDS,MER,Identity & Security,IAM & Cyber Security,7,34

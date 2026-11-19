@@ -1,0 +1,65 @@
+# RAG thresholds used by the deterministic rules engine.
+# Bump `version` whenever a cut-off changes; it is stored with every health snapshot.
+version: "1.1"
+
+windows:
+  say_do_sprints: 3          # rolling window of closed sprints for ratio metrics
+  velocity_sprints: 5        # closed sprints used for velocity variability
+
+metrics:
+  say_do_ratio:              # completed points / committed points (window)
+    direction: higher_is_better
+    green: 0.85
+    amber: 0.70
+  velocity_cv:               # std dev / mean of completed points (velocity window)
+    direction: lower_is_better
+    green: 0.15
+    amber: 0.30
+  scope_change_pct:          # (added + removed) / committed (window)
+    direction: lower_is_better
+    green: 0.10
+    amber: 0.20
+  carry_over_pct:            # carried-over points / committed points (window)
+    direction: lower_is_better
+    green: 0.10
+    amber: 0.20
+  pi_objective_achievement:  # actual BV (all objectives) / planned BV (committed), last closed PI
+    direction: higher_is_better
+    green: 0.80
+    amber: 0.60
+  raid_hygiene_findings:     # count of open RAID hygiene findings for the squad
+    direction: lower_is_better
+    green: 0
+    amber: 2
+  late_dependencies:         # count of undelivered dependencies past needed-by (squad is requester)
+    direction: lower_is_better
+    green: 0
+    amber: 2
+
+raid:
+  stale_after_days: 14
+  high_risk_score: 15        # probability x impact (1-25)
+  issue_ageing_days: 30
+  duplicate_similarity: 0.6  # token Jaccard similarity for duplicate candidates
+
+dependencies:
+  late_tolerance_days: 0
+  unconfirmed_warning_days: 14   # uncommitted dependency needed within N days is at risk
+
+milestones:
+  amber_slip_days: 1         # forecast later than baseline by at least N days
+  red_slip_days: 15
+
+health_weights:              # composite squad health; must sum to 1.0
+  say_do_ratio: 0.20
+  velocity_cv: 0.10
+  scope_change_pct: 0.10
+  carry_over_pct: 0.10
+  pi_objective_achievement: 0.20
+  raid_hygiene_findings: 0.15
+  late_dependencies: 0.15
+
+composite:
+  green: 0.80                # weighted score (GREEN=1, AMBER=0.5, RED=0) at or above -> GREEN
+  amber: 0.50                # at or above -> AMBER, otherwise RED
+  red_if_owns_red_milestone: true

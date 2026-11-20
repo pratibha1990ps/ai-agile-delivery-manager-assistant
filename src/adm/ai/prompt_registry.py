@@ -35,7 +35,8 @@ from adm.ai.models import AnalysisResponse, FactPack, Focus
 PROMPTS_DIR = Path(__file__).with_name("prompts")
 PLACEHOLDER = re.compile(r"\{\{\s*([a-z_]+)\s*\}\}")
 KNOWN_PLACEHOLDERS = {"question", "scope_label", "as_of", "focus_instructions", "note",
-                      "fact_count", "omitted_count", "fact_pack_json", "output_schema"}
+                      "fact_count", "omitted_count", "fact_pack_json", "output_schema",
+                      "report_schema"}
 REQUIRED_META = {"id", "version", "description", "output_schema"}
 
 

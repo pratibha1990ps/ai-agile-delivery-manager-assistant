@@ -15,8 +15,10 @@ and suggested actions take effect only when a named person approves them.
 4. AI Leadership Reporting
 5. Delivery Decision Assistant
 
-## Quick start (Windows PowerShell)
+## Quick start (Windows PowerShell, Python 3.11+)
 ```powershell
+git clone https://github.com/pratibha1990ps/ai-agile-delivery-manager-assistant.git
+cd ai-agile-delivery-manager-assistant
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install -e ".[dev]"
@@ -77,6 +79,17 @@ row-level validation errors. Planted scenarios (the golden test answers) are lis
 - Phase 3 (AI foundation + AI RAID Analyst + AI Audit Log): done. Provider abstraction (mock,
   OpenAI-compatible, Anthropic), fact packs, versioned prompts, grounding validator, audit log
   and human review. All tests run without network access or a paid API.
+
+## Limitations
+- The default **Mock** provider is a deterministic stand-in, not a language model. It proves
+  the pipeline end to end at no cost; answer quality needs a real model (Ollama, OpenAI or
+  Anthropic) and is not measured here.
+- The grounding validator is pattern-based. It proves an answer is traceable to cited facts;
+  it cannot judge whether the advice is wise. Human review is the control for that.
+- All data is fictional. This is not client or employer work.
+
+## Licence
+MIT, see [LICENSE](LICENSE).
 
 Full product documentation (vision, discovery, architecture and ADRs, backlog, evidence log)
 is in [`docs/`](docs/README.md).

@@ -26,7 +26,7 @@ from typing import Any
 
 import pandas as pd
 
-from adm.ai.models import AnalysisRequest, Fact, FactKind, FactPack, Focus
+from adm.ai.models import PROGRAMME_SCOPE, AnalysisRequest, Fact, FactKind, FactPack, Focus
 from adm.config import Thresholds
 from adm.rules.escalation import escalation_candidates
 from adm.rules.exposure import objective_exposures
@@ -119,8 +119,8 @@ def _linked(value: Any) -> list[str]:
 class _Collector:
     """Accumulates (priority, fact) pairs for the families the focus needs."""
 
-    def __init__(self, focus: Focus, squads_in_scope: set[str] | None) -> None:
-        self.families = FOCUS_FAMILIES[focus]
+    def __init__(self, families: dict[str, int], squads_in_scope: set[str] | None) -> None:
+        self.families = families
         self.squads = squads_in_scope          # None = programme scope
         self.items: dict[str, tuple[int, Fact]] = {}
 
@@ -143,17 +143,28 @@ class _Collector:
 
 # --- the builder --------------------------------------------------------------------------
 
-def build_fact_pack(data: ProgrammeData, bundle: RuleBundle, request: AnalysisRequest,
-                    max_facts: int = 80) -> FactPack:
+def scope_squads(data: ProgrammeData, scope: str) -> set[str] | None:
+    """The squads a scope covers: ``None`` for the whole programme, else that one squad."""
     squads = {str(s) for s in data.squads["squad_id"]}
-    if not request.is_programme and request.scope not in squads:
-        raise ValueError(f"Unknown scope '{request.scope}'. Use 'programme' or one of "
+    if scope == PROGRAMME_SCOPE:
+        return None
+    if scope not in squads:
+        raise ValueError(f"Unknown scope '{scope}'. Use 'programme' or one of "
                          f"{sorted(squads)}.")
-    scope_squads = None if request.is_programme else {request.scope}
-    c = _Collector(request.focus, scope_squads)
-    report = bundle.report
+    return {scope}
 
-    context = _context_facts(data, bundle, request)
+
+def collect_facts(data: ProgrammeData, bundle: RuleBundle, scope: str,
+                  families: dict[str, int], max_facts: int) -> tuple[list[Fact], int]:
+    """Gather facts of the given families for a scope, best first, capped at ``max_facts``.
+
+    ``families`` maps a family name to its rank (lower = kept first). Returns the kept facts and
+    how many lower-ranked facts were left out. Used by the Fact Pack builder (one focus) and by
+    the agent's read-only tools (one family set per tool).
+    """
+    squads = {str(s) for s in data.squads["squad_id"]}
+    c = _Collector(families, scope_squads(data, scope))
+    report = bundle.report
     _health_and_metrics(c, report)
     _findings(c, report)
     _escalations(c, bundle.escalations)
@@ -164,14 +175,21 @@ def build_fact_pack(data: ProgrammeData, bundle: RuleBundle, request: AnalysisRe
     _dependency_records(c, data.dependencies, report)
     _objective_and_feature_records(c, data, bundle)
     _aggregates(c, data, bundle, squads)
-
     ranked = sorted(c.items.values(), key=lambda pf: (pf[0], pf[1].fact_id))
-    room = max(max_facts - len(context), 0)
-    kept = [f for _, f in ranked[:room]]
+    room = max(max_facts, 0)
+    return [f for _, f in ranked[:room]], max(len(ranked) - room, 0)
+
+
+def build_fact_pack(data: ProgrammeData, bundle: RuleBundle, request: AnalysisRequest,
+                    max_facts: int = 80) -> FactPack:
+    scope_squads(data, request.scope)                       # fail early on an unknown scope
+    context = _context_facts(data, bundle, request)
+    kept, omitted = collect_facts(data, bundle, request.scope, FOCUS_FAMILIES[request.focus],
+                                  max(max_facts - len(context), 0))
     return FactPack(
         use_case=USE_CASE, request=request, as_of=bundle.as_of,
         rule_version=bundle.rule_version, facts=tuple(context + kept),
-        omitted_count=max(len(ranked) - room, 0),
+        omitted_count=omitted,
     )
 
 

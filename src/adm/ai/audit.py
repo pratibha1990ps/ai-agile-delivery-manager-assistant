@@ -77,6 +77,8 @@ class AuditEntry:
     latency_ms: int | None = None
     usage: dict[str, int] | None = None
     error: str | None = None
+    status: str | None = None             # used when there is no validation (e.g. agent stopped)
+    extra: dict[str, Any] | None = None   # stored under "agent" in parsed_json (agent traces)
 
 
 def log_analysis(conn: sqlite3.Connection, entry: AuditEntry,
@@ -87,13 +89,15 @@ def log_analysis(conn: sqlite3.Connection, entry: AuditEntry,
             "fact_count": len(entry.pack.facts), "omitted_count": entry.pack.omitted_count}
 
     if entry.validation is None:
-        status = Status.PROVIDER_ERROR.value
+        status = entry.status or Status.PROVIDER_ERROR.value
         parsed: dict[str, Any] = {"error": entry.error or "Unknown provider error", "meta": meta}
     else:
         status = entry.validation.status.value
         response = (entry.validation.response.model_dump(mode="json")
                     if entry.validation.response else None)
         parsed = {"response": response, "validation": entry.validation.report(), "meta": meta}
+    if entry.extra:
+        parsed["agent"] = entry.extra
 
     with conn:
         cur = conn.execute(

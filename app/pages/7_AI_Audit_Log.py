@@ -30,7 +30,7 @@ c2.metric("Valid (incl. warnings)",
           int(runs["validation_status"].isin(["valid", "valid_with_warnings"]).sum()))
 c3.metric("Partially rejected / invalid / errors",
           int(runs["validation_status"].isin(["partially_rejected", "invalid",
-                                              "provider_error"]).sum()))
+                                              "provider_error", "agent_incomplete"]).sum()))
 c4.metric("Runs with human reviews", int((runs["reviews"] > 0).sum()))
 
 statuses = sorted(runs["validation_status"].unique())
@@ -50,8 +50,11 @@ request = out["fact_pack"]["request"]
 parsed = out["parsed"] or {}
 meta = parsed.get("meta", {})
 
-st.subheader(f"Run #{run_id}: {request['focus'].replace('_', ' ')} · "
-             f"{'programme' if request['scope'] == 'programme' else 'squad ' + request['scope']}")
+if out["use_case"] == "weekly_report":
+    st.subheader(f"Run #{run_id}: weekly report agent")
+else:
+    where = "programme" if request["scope"] == "programme" else "squad " + request["scope"]
+    st.subheader(f"Run #{run_id}: {request['focus'].replace('_', ' ')} · {where}")
 left, right = st.columns(2)
 left.markdown(
     f"- **When (UTC):** {out['created_at']}\n"
@@ -87,8 +90,13 @@ if validation:
     if issues:
         st.dataframe(issues, hide_index=True, width="stretch")
 
-t1, t2, t3, t4, t5 = st.tabs(["Human decisions", "Citations", "Fact pack (what the AI saw)",
-                              "Raw answer", "Source IDs"])
+agent = parsed.get("agent")
+labels = ["Human decisions", "Citations", "Fact pack (what the AI saw)", "Raw answer",
+          "Source IDs"]
+if agent:
+    labels.append("Agent steps")
+tabs = st.tabs(labels)
+t1, t2, t3, t4, t5 = tabs[:5]
 with t1:
     history = review_history(conn, int(run_id))
     if history.empty:
@@ -109,3 +117,14 @@ with t4:
     st.code(out["raw_response"] or "(no answer: provider error)", language="json")
 with t5:
     st.write(", ".join(meta.get("source_ids", [])) or "(none)")
+if agent:
+    with tabs[5]:
+        st.caption(f"Run status `{agent['run_status']}` · {agent['tool_calls_used']} tool calls "
+                   f"· {agent['turns']} turns · tools used: "
+                   f"{', '.join(agent['tools_consulted']) or 'none'}")
+        if agent.get("run_error"):
+            st.warning(agent["run_error"])
+        st.dataframe([{"turn": s["turn"], "kind": s["kind"], "tool": s["tool"],
+                       "args": json.dumps(s["args"]), "facts": len(s["fact_ids"]),
+                       "left out": s["omitted_count"], "note": s["message"]}
+                      for s in agent["steps"]], hide_index=True, width="stretch")

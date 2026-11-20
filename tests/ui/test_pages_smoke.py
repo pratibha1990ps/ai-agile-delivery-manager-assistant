@@ -15,6 +15,7 @@ def test_home_module_status_reflects_built_pages():
     assert "✅ Live" in lines["Data Import"]
     assert "✅ Live" in lines["2. AI RAID Analyst"]
     assert "✅ Live" in lines["AI Audit Log"]
+    assert "✅ Live" in lines["4. AI Leadership Reporting"]
     assert "⏳ Planned" in lines["3. Sprint & PI Health Analyser"]
 
 

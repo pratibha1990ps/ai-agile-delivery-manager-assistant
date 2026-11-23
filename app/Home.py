@@ -44,7 +44,7 @@ MODULES = [
     ("3. Sprint & PI Health Analyser", "3_Sprint_PI_Health.py", 4,
      "Predictability metrics and grounded narrative"),
     ("4. AI Leadership Reporting", "4_Leadership_Report.py", 5,
-     "Draft, approve and export a cited status report"),
+     "An agent drafts a cited weekly report; a named person approves its asks"),
     ("5. Delivery Decision Assistant", "5_Decision_Assistant.py", 6,
      "What-if impact plus AI option analysis"),
     ("Data Import", "6_Data_Import.py", 1, "Validated CSV/Excel import with lineage"),

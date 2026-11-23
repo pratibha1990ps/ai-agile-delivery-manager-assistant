@@ -15,6 +15,15 @@ and suggested actions take effect only when a named person approves them.
 4. AI Leadership Reporting
 5. Delivery Decision Assistant
 
+## Screenshots
+Synthetic data only. The first shows the non-AI Control Tower; its statuses come from tested rules.
+The second shows the agent's weekly report, where the squad table is built by rules and the
+checker has hidden a statement it could not verify (a free demo run using the fault demo option).
+
+![Delivery Control Tower: squad health computed by rules](docs/images/control-tower.png)
+
+![AI Leadership Reporting: rule-built status table and a checker warning](docs/images/leadership-report-rejected.png)
+
 ## Quick start (Windows PowerShell, Python 3.11+)
 ```powershell
 git clone https://github.com/pratibha1990ps/ai-agile-delivery-manager-assistant.git

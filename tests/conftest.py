@@ -1,9 +1,26 @@
+import os
+import shutil
+import tempfile
 from pathlib import Path
 
 import pytest
 
 from adm.db.connection import connect, init_db
 from adm.synthetic.generate import generate_dataset, write_dataset, write_dirty_sample
+
+
+def _hermetic_config_dir() -> str:
+    """Copy the tracked config files only, so a developer's git-ignored config/llm.yaml (real
+    provider, real key) can never change what the tests run against. Set before test modules
+    are imported, because some call load_config() at import time."""
+    src = Path(__file__).resolve().parents[1] / "config"
+    dest = Path(tempfile.mkdtemp(prefix="adm_test_config_"))
+    for name in ("settings.yaml", "thresholds.yaml", "llm.yaml.example"):
+        shutil.copy(src / name, dest / name)
+    return str(dest)
+
+
+os.environ["ADM_CONFIG_DIR"] = _hermetic_config_dir()
 
 
 @pytest.fixture(autouse=True)

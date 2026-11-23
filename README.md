@@ -39,6 +39,21 @@ Every run is recorded on **AI Audit Log** (provider, model, prompt version, fact
 SHA-256 fingerprint, raw answer, validation outcome, reviews). The *Demo: simulate a faulty AI
 response* option shows the validator rejecting invented IDs, wrong numbers and RAG overrides.
 
+## AI Leadership Reporting: the Weekly Delivery Report Agent (Phase 5)
+Open **Leadership Report** and click **Prepare weekly report**. This is an *agent*: the AI chooses
+which of six read-only tools to call next (programme health, squad metrics, RAID items, late
+dependencies, escalation candidates, milestones), then drafts the report.
+
+- **Guardrails:** at most 8 tool calls, repeated calls refused, no tool can change data.
+- **Evidence:** a statement may only cite facts the agent actually retrieved; the checker marks
+  each one verified, flagged or rejected, and rejected statements are hidden.
+- **Status table:** built by rules from the health facts. The AI cannot change it.
+- **Human decision:** each ask is approved or rejected by a named person and logged on the audit page.
+- **Free demo:** with the `mock` provider a built-in demo agent runs offline. Open *Demo: simulate
+  a faulty agent* to see the checker and the step limit catch bad behaviour.
+
+Not built yet: editing the report text and exporting it to Markdown or Word.
+
 ## LLM configuration
 Copy `config/llm.yaml.example` to `config/llm.yaml` (git-ignored). The default provider is
 `mock`: deterministic templates, not a language model, with no key and no cost. Optional real
@@ -79,6 +94,9 @@ row-level validation errors. Planted scenarios (the golden test answers) are lis
 - Phase 3 (AI foundation + AI RAID Analyst + AI Audit Log): done. Provider abstraction (mock,
   OpenAI-compatible, Anthropic), fact packs, versioned prompts, grounding validator, audit log
   and human review. All tests run without network access or a paid API.
+- Phase 5 (Weekly Delivery Report Agent): agent, checker, page and tests done; report export not
+  built. One real run with Claude Sonnet 5.5 gave 12 statements verified and 3 rejected by the
+  checker (about $0.27). That is a single sample, not a measured quality rate.
 
 ## Limitations
 - The default **Mock** provider is a deterministic stand-in, not a language model. It proves

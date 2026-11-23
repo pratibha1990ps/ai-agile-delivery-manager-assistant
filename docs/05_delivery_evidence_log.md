@@ -28,6 +28,10 @@ A dated record of what was done, how, and the evidence for it. Command outputs a
 | 18 | 2026-11-19 | Discovery: Phase 3 | Phase 3 plan approved. Product owner decisions: squad-level **exposure rule** (no schema change) and additive **`ai_review`** table | [03 ADR-010/011](03_architecture_and_solution_design.md#adr-010--additive-ai_review-table-for-human-decisions) |
 | 19 | 2026-11-19 | Execution: Phase 3 | Eleven tasks T1–T11 delivered one at a time, each with tests and a review pause | §Evidence J |
 | 20 | 2026-11-19 | Execution: Phase 3 | AI RAID Analyst checked in the browser: clean escalation run, then `rag_override` fault demo rejected by the validator | §Evidence J |
+| 21 | 2026-11-20 | Discovery: agent | Weekly Delivery Report Agent plan approved (A1–A9): read-only tools, max 8 tool calls, existing grounding checker, named human approver | [04 E5](04_product_backlog.md) |
+| 22 | 2026-11-20 | Execution: agent | A2–A7 delivered one step at a time and committed separately (tools, loop, validation, prompt, page, scenario tests) | §Evidence K |
+| 23 | 2026-11-20 | Execution: agent | A8: one real run with Claude Sonnet 5.5 through the existing Anthropic provider | §Evidence K |
+| 24 | 2026-11-23 | Execution: agent | A9: backlog, architecture (ADR-013 to ADR-015) and evidence updated; test isolation fixed after the real-model config leaked into tests | §Evidence K |
 
 ## Evidence
 
@@ -209,6 +213,44 @@ Run 2  Immediate attention + fault rag_override
 ```
 Both runs are stored in `data/adm.db` (`ai_output` #1 `valid`, #2 `partially_rejected`).
 
+### K · Weekly Delivery Report Agent (A2–A9)
+Steps committed on 2026-11-20 (A2, A3+A4, A5, A6, A7). The suite went from 346 passing (end of
+Phase 3) to 493 passing, all without network access or a paid API:
+
+```text
+> pytest -q
+493 passed in 83.14s
+> ruff check .
+All checks passed!
+```
+
+**A8 · one real run** (Claude Sonnet 5.5, `claude-sonnet-5-5`, temperature 0, audit entry #7 in
+the author's local database). Quoted as observed, including the part that was not clean:
+
+| Measure | Result |
+|---|---|
+| Run status / report status | `completed` / `partially_rejected` |
+| Effort | 7 tool calls, 8 turns, 43.5 s |
+| Tokens | 104,267 input, 5,654 output (about $0.27 at published prices) |
+| Checks | 12 verified, 0 flagged, 3 rejected |
+| Status table (rules) | DAT RED, MOB RED, IDS AMBER, ONB AMBER, PAY GREEN |
+| Asks for leadership | 5 of 5 verified |
+| Headline | MS-07 is forecast 20 days late because DEP-012 is late |
+
+The 3 rejections: two were the model's shorthand (`S05/S07`, `PI-1`) that the checker could not
+match to a fact, and one was a genuine model error ("RAID hygiene RED" where the fact says AMBER).
+The checker hid all three, which is the intended behaviour. A tuned `weekly_report@v2` prompt was
+considered and deliberately not built, so v1 stays.
+
+Issue found during A8 and fixed at the source: creating a git-ignored `config/llm.yaml` for the
+real model made 10 tests fail (they loaded it and needed `ANTHROPIC_API_KEY`, or expected the
+default `max_tokens`). Tests now copy only the tracked config files into a temporary folder
+(`tests/conftest.py`), so a developer's personal config can never change or bill a test run.
+Before the fix: 10 failed, 483 passed. After: 493 passed.
+
+Not independently verified: the cost figure is calculated from token counts and published
+prices, not read from an invoice. The real run was a single sample, not a measured pass rate.
+
 ## Artefacts by phase
 
 ### Phase 0 artefacts ✅ Done
@@ -249,6 +291,22 @@ The table below was written while Phase 1 was in progress. Since then, all of th
 
 See the task table in [04_product_backlog.md](04_product_backlog.md) (E3 · How it was delivered)
 and [03 §10](03_architecture_and_solution_design.md#10-phase-3-ai-layer-as-built).
+
+### Phase 5 agent artefacts 🟡 Agent done, export not built
+
+| File | Purpose |
+|---|---|
+| [`src/adm/agent/tools.py`](../src/adm/agent/tools.py) | Six read-only tools wrapping the rules and fact pack |
+| [`src/adm/agent/loop.py`](../src/adm/agent/loop.py) | Agent loop and guardrails (8 tool calls, duplicate refusal, never raises) |
+| [`src/adm/agent/report.py`](../src/adm/agent/report.py) | Report format, validation against the agent's own evidence, rule-built status table |
+| [`src/adm/agent/demo.py`](../src/adm/agent/demo.py), [`prompts.py`](../src/adm/agent/prompts.py) | Free offline demo agent with fault modes; prompt loader |
+| [`src/adm/ai/prompts/weekly_report/v1.md`](../src/adm/ai/prompts/weekly_report/v1.md) | Immutable report prompt |
+| [`src/adm/services/weekly_report.py`](../src/adm/services/weekly_report.py) | Service: agent, validation, audit |
+| [`app/pages/4_Leadership_Report.py`](../app/pages/4_Leadership_Report.py) | AI Leadership Reporting page |
+| `tests/agent/`, `tests/integration/test_weekly_report_service.py`, `tests/ui/test_leadership_report_page.py` | Unit, scenario and page tests |
+
+See [03 §11](03_architecture_and_solution_design.md#11-phase-5-weekly-delivery-report-agent-as-built)
+and the delivery table in [04 E5](04_product_backlog.md).
 
 ## How to reproduce the Phase 0 evidence
 ```bash

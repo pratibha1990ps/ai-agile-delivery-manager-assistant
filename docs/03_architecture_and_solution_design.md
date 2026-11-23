@@ -89,6 +89,9 @@ sequenceDiagram
 | Human review | Additive `ai_review` table with full history | [ADR-010](#adr-010--additive-ai_review-table-for-human-decisions) |
 | Escalation and exposure | Deterministic rules; exposure is squad-level | [ADR-011](#adr-011--escalation-and-exposure-are-rules-not-ai) |
 | Prompts | Versioned files, immutable once published | [ADR-012](#adr-012--versioned-immutable-prompt-files) |
+| Agent loop | Plain-JSON actions through the provider interface | [ADR-013](#adr-013--the-agent-speaks-plain-json-through-the-provider-interface) |
+| Agent evidence | Read-only tools; evidence is only what the tools returned | [ADR-014](#adr-014--read-only-tools-and-tool-results-as-the-only-evidence) |
+| Agent limits | Hard caps on calls and turns; a run never raises | [ADR-015](#adr-015--hard-guardrails-on-every-agent-run) |
 
 ## 2. Application module breakdown
 
@@ -495,6 +498,21 @@ The config loads with this precedence ([`src/adm/config.py`](../src/adm/config.p
 - **Decision:** Prompts live in `src/adm/ai/prompts/<id>/<version>.md` with front matter and sections. Templates are validated on load (sections, placeholders, version vs file name). The audit log records `id@version` and the file's SHA-256. A test pins published hashes, so changing wording means adding a new version.
 - **Consequences:** ✅ Every answer is reproducible against exact wording; prompt reviews are ordinary file reviews. ⚠️ Small wording fixes require a new version, which is deliberate.
 
+### ADR-013 — The agent speaks plain JSON through the provider interface
+- **Context:** The Weekly Delivery Report Agent must let a model choose its next step. Native tool-calling APIs differ per vendor, would tie the agent to one provider, and cannot run on the free mock provider that every test uses.
+- **Decision:** Each turn the model returns one JSON object: `call_tool` (name and arguments) or `final` (the report). The loop sends and reads plain text through the existing `LLMProvider` interface, so Mock, Ollama, OpenAI-compatible and Anthropic all work unchanged. Markdown-fenced JSON is accepted; anything else is told what was wrong and asked again.
+- **Consequences:** ✅ Provider-agnostic; fully testable offline with scripted replies. ⚠️ Slightly more tokens than native tool calling, and the model sometimes needs a correction turn.
+
+### ADR-014 — Read-only tools and tool results as the only evidence
+- **Context:** A model that can fetch data must not be able to change it, and a report must not cite anything the agent did not actually see.
+- **Decision:** The agent has six read-only tools that wrap existing rules and the fact pack. Every fact a tool returns is added to the run's evidence, which becomes a fact pack with use case `weekly_report`. The existing grounding validator checks the final answer against that evidence only, so citing a real fact the agent never retrieved is rejected. The squad status table is built by rules from the health facts, never from AI text.
+- **Consequences:** ✅ No write path exists for the AI; colours cannot be changed by wording. ⚠️ The model sometimes writes shorthand (such as "S05/S07" or "PI-1") that the checker cannot match, so a real run can end with some statements rejected.
+
+### ADR-015 — Hard guardrails on every agent run
+- **Context:** Agents choose their own steps, so cost, loops and bad output need limits that do not depend on the model behaving.
+- **Decision:** At most 8 tool calls and at most `max_tool_calls + 4` turns. A repeated call is refused and not charged. Two unreadable replies in a row end the run. The loop never raises: it returns a run status (`completed`, `tool_limit`, `turn_limit`, `invalid_output`, `provider_error`) and every step is recorded in the audit log. A named human must approve each ask.
+- **Consequences:** ✅ Worst-case cost and behaviour are bounded and tested with scripted bad models. ⚠️ A good answer that needs a ninth tool call is cut off.
+
 ## 10. Phase 3 AI layer (as built)
 
 ```mermaid
@@ -521,3 +539,38 @@ flowchart LR
 Known limits: the checks are pattern-based (numbers written as words are not checked; unusual
 phrasing can slip through or trigger a false rejection), and they prove traceability, not
 wisdom. Human approval is the control for judgement.
+
+## 11. Phase 5 Weekly Delivery Report Agent (as built)
+
+```mermaid
+flowchart LR
+    G[Goal + optional note] --> L[AgentLoop<br/>max 8 tool calls]
+    L <--> M[LLMProvider<br/>one JSON action per turn]
+    L --> T[ToolBox<br/>6 read-only tools]
+    T --> E[(Evidence<br/>tool results only)]
+    L --> A[Final answer JSON]
+    E --> V[grounding.validate]
+    A --> V
+    E --> S[Status table<br/>built by rules]
+    V --> D[(ai_output + ai_citation)]
+    V --> U[Leadership Report page]
+    S --> U
+    U --> H[(ai_review<br/>named approver)]
+```
+
+Report format: headline, findings (sections `off_track` and `risks_dependencies`), leadership
+asks and data gaps. Prompt: `weekly_report@v1`. With the `mock` provider the page uses a free
+offline demo agent with fault modes (`invented_id`, `never_stops` and others) to show the checker
+and the limits working.
+
+| Situation | Outcome |
+|---|---|
+| Every statement passes | Report `valid` |
+| Some statements flagged | `valid_with_warnings` |
+| Some statements rejected | `partially_rejected`: rejected ones are hidden, the rest is shown |
+| Extra fields or unusable JSON in the final answer | `invalid` |
+| Run ended early (call limit, turn limit, bad replies, provider error) | `agent_incomplete`: no draft, the rule-computed table is still shown |
+
+Known limits: the agent depends on the checker's pattern-based matching (see section 10), a
+rejection can be a model mistake or merely unmatched shorthand, and approval covers asks only;
+report text cannot be edited yet and there is no export.

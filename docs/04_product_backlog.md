@@ -1,6 +1,6 @@
 # 04 · Product Backlog (Execution)
 
-**Status as of 2026-11-19 (updated after Phase 3):** Phases 0–3 ✅ Done (MVP complete) · Phases 4–7 ⬜ To Do
+**Status as of 2026-11-23 (updated after the Weekly Delivery Report Agent):** Phases 0–3 ✅ Done (MVP complete) · Phase 5 (E5) 🟡 agent built, export still To Do · Phases 4, 6, 7 ⬜ To Do
 **Estimation:** story points on a Fibonacci scale (1, 2, 3, 5, 8, 13). **Priority:** MoSCoW, measured against the MVP (Phases 0–3).
 
 ## 1. Epics mapped to phases and modules
@@ -12,7 +12,7 @@
 | E2 Rules Engine & Control Tower | 2 | **1. Delivery Control Tower** | Deterministic health and the non-AI MVP | Must | 34 | ✅ Done |
 | E3 AI Foundation & RAID Analyst | 3 | **2. AI RAID Analyst**, AI Audit Log | Grounded AI pattern proven. **MVP complete** | Must | 42 | ✅ Done |
 | E4 Sprint & PI Health | 4 | **3. Sprint & PI Health Analyser** | Predictability metrics and narrative | Should | 21 | ⬜ To Do |
-| E5 Leadership Reporting | 5 | **4. AI Leadership Reporting** | Draft, approve and export a status report | Should | 21 | ⬜ To Do |
+| E5 Leadership Reporting | 5 | **4. AI Leadership Reporting** | Draft, approve and export a status report | Should | 21 | 🟡 Agent draft and approval done; export To Do |
 | E6 Decision Assistant | 6 | **5. Delivery Decision Assistant** | What-if analysis plus a decision register | Could | 26 | ⬜ To Do |
 | E7 Portfolio Polish | 7 | All | CI, docs, demo, optional deployment | Should | 13 | ⬜ To Do |
 | | | | | **Total** | **199** | |
@@ -93,11 +93,34 @@ Default persona: **DM** = Delivery Manager. Acceptance criteria use Given / When
 
 | ID | Story | Acceptance criteria | MoSCoW | Pts | Status |
 |---|---|---|---|---|---|
-| US-5.1 | As a Programme Lead, I want a report assembled from rule outputs (overall RAG, KPIs, milestones, top risks, decisions needed) so that it's factually consistent | **Given** current health **When** the report is assembled **Then** every figure matches the Control Tower | Must | 5 | ⬜ To Do |
-| US-5.2 | As a DM, I want an AI-drafted executive summary with citations so that I save writing time | **Given** report data **When** the draft is generated **Then** each sentence has valid citations | Must | 5 | ⬜ To Do |
-| US-5.3 | As a DM, I want to edit and approve the draft, with the approval logged, so that a human stays accountable | **Given** a draft **When** I approve it with my name **Then** `approved_by` and `approved_at` are stored | Must | 3 | ⬜ To Do |
+| US-5.1 | As a Programme Lead, I want a report assembled from rule outputs (overall RAG, KPIs, milestones, top risks, decisions needed) so that it's factually consistent | **Given** current health **When** the report is assembled **Then** every figure matches the Control Tower | Must | 5 | ✅ Done (status table built by rules from health facts) |
+| US-5.2 | As a DM, I want an AI-drafted executive summary with citations so that I save writing time | **Given** report data **When** the draft is generated **Then** each sentence has valid citations | Must | 5 | ✅ Done (as an agent; every statement is checked) |
+| US-5.3 | As a DM, I want to edit and approve the draft, with the approval logged, so that a human stays accountable | **Given** a draft **When** I approve it with my name **Then** `approved_by` and `approved_at` are stored | Must | 3 | 🟡 Approve and reject with a named reviewer done; editing the text is not built |
 | US-5.4 | As a DM, I want to export the approved report to Markdown or DOCX so that I can share it | **Given** an approved report **When** I export it **Then** a Markdown or DOCX file downloads with its citations | Should | 5 | ⬜ To Do |
 | US-5.5 | As a DM, I want report export blocked until approval so that unreviewed AI text isn't shared | **Given** an unapproved draft **When** I try to export **Then** export is disabled | Should | 3 | ⬜ To Do |
+
+### E5 · How the agent was delivered (Weekly Delivery Report Agent, 8 steps)
+
+Phase 5 was built as an *agent*: the AI chooses which read-only tool to call next, within hard
+limits, instead of receiving one pre-built fact pack. Rules still compute, a checker still
+validates, and a named human still decides.
+
+| Step | Delivered | Main files |
+|---|---|---|
+| A1 | Goal, tools, limits and report format agreed (plan only, no code) | this document |
+| A2 | Read-only tools that wrap the existing rules and fact pack | `src/adm/agent/tools.py` |
+| A3 | Agent loop: max 8 tool calls, duplicate calls refused, two unreadable replies end the run | `src/adm/agent/loop.py` |
+| A4 | Report validation: reuses the grounding checker against the agent's own evidence | `src/adm/agent/report.py` |
+| A5 | Versioned, immutable prompt `weekly_report@v1` (SHA-256 pinned) | `src/adm/ai/prompts/weekly_report/v1.md`, `src/adm/agent/prompts.py` |
+| A6 | AI Leadership Reporting page, report service, free offline demo agent with fault modes | `app/pages/4_Leadership_Report.py`, `src/adm/services/weekly_report.py`, `src/adm/agent/demo.py` |
+| A7 | Scenario tests: chatty or junk replies, wrong tool names, hostile text in the data, no network | `tests/agent/`, `tests/integration/test_weekly_report_service.py`, `tests/ui/test_leadership_report_page.py` |
+| A8 | One real-model run (Claude Sonnet 5.5) | audit log #7 on the author's machine; see the evidence log |
+| A9 | Docs, backlog and evidence updates (this change) | `docs/` |
+
+Scope notes: the agent speaks plain JSON through the existing provider interface rather than a
+native tool-calling API, so it works with every provider (ADR-013). Not built: report editing
+(US-5.3), Markdown/DOCX export (US-5.4) and export blocking (US-5.5). Prompt tuning (a `v2`) was
+considered after the real run and deliberately deferred.
 
 ### E6 · Delivery Decision Assistant
 

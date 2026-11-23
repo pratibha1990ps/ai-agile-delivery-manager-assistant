@@ -16,6 +16,6 @@ flowchart LR
     E -. feedback .-> B
 ```
 
-**Current status (2026-11-19):** Phases 0–3 ✅ Done (MVP complete) · Phases 4–7 ⬜ To Do
+**Current status (2026-11-23):** Phases 0–3 ✅ Done (MVP complete) · Phase 5 🟡 agent built, export To Do · Phases 4, 6, 7 ⬜ To Do
 
 **Core principle:** *rules compute, AI interprets.* Every metric and RAG status is deterministic and tested. AI explains using cited source records only.
